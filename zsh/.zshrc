@@ -1,0 +1,90 @@
+### oh my zsh
+
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+#ZSH_TEME="agnoster"
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  emoji-clock
+  themes
+)
+source $ZSH/oh-my-zsh.sh
+
+
+### rbenv
+
+export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+
+### aliases
+
+# cd
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ioartista='cd ~/Code/ioartista_it'
+
+# ls
+alias ll='ls -lahFG'
+
+# rails locale
+alias rs='bin/rails server'
+alias rc='bin/rails console'
+alias rdbc='bin/rails dbconsole'
+alias rdbm='bin/rails db:migrate'
+
+# rails production
+alias k='kamal'
+alias kd='kamal deploy'
+alias kl='kamal logs -f'
+alias kc='kamal app exec --interactive "bin/rails console"'
+alias kdb='kamal app exec --interactive "bin/rails dbconsole"'
+
+# git
+#alias gst='git status'
+#alias gad='git add .'
+#alias gcm='git commit -m' 
+#alias gco='git checkout'
+#alias gcb='git checkout -b' # Crea e salta su un nuovo branch
+#alias gpl='git pull'
+#alias gps='git push'
+#alias ggl="git log --graph --oneline --decorate"
+#alias gdi='git diff'
+
+# system
+alias ref='source ~/.zshrc'
+
+# Svuota la cache del DNS del Mac (utile quando un sito non si carica dopo modifiche ai server)
+alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+
+# Mostra le porte occupate sul Mac (se un server Rails o Postgres si blocca e non si avvia perché la porta è occupata, questo ti dice chi la sta usando)
+alias portslis='sudo lsof -iTCP -sTCP:LISTEN -P'
+
+# Copia rapidamente la tua chiave pubblica SSH negli appunti per incollarla su GitHub/Bitbucket
+alias pubkey="pbcopy < ~/.ssh/id_rsa.pub"
+
+### vps
+
+alias vps-connect='ssh ubuntu@145.239.72.166'
+alias vps-status="ssh -t ubuntu@145.239.72.166 '
+echo -e \"\033[1;36m===================================================\033[0m\"
+echo -e \"\033[1;33m 🚀 VPS DASHBOARD - \$(hostname) \033[0m\"
+echo -e \"\033[1;36m===================================================\033[0m\"
+echo -e \"\033[1;32m💻 CPU & CARICO:\033[0m\"
+echo -e \"   Model: \$(lscpu | grep \"Model name\" | cut -d\":\" -f2 | xargs)\"
+echo -e \"   Cores: \$(nproc) | Load Avg: \$(uptime | awk -F\"load average:\" \"{print \\\$2}\")\"
+echo \"\"
+echo -e \"\033[1;35m🧠 MEMORIA RAM:\033[0m\"
+free -h | awk \"NR==1{printf \\\"   %-10s %-10s %-10s %-10s\n\\\", \\\$2, \\\$3, \\\$4, \\\$7} NR==2{printf \\\"   %-10s %-10s %-10s %-10s\n\\\", \\\$2, \\\$3, \\\$4, \\\$7}\"
+echo \"\"
+echo -e \"\033[1;33m💾 DISCO (/):\033[0m\"
+df -h / | awk \"NR==2{print \\\"   Usato: \\\" \\\$3 \\\" / \\\" \\\$2 \\\" (\\\" \\\$5 \\\") - Libero: \\\" \\\$4}\"
+echo \"\"
+echo -e \"\033[1;34m🐳 CONTAINER DOCKER ATTIVI:\033[0m\"
+docker stats --no-stream --format \"table   \033[1m{{.Name}}\033[0m\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\"
+echo -e \"\033[1;36m===================================================\033[0m\"
+fastfetch
+'"
