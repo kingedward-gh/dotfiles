@@ -26,6 +26,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ioartista='cd ~/Code/ioartista_it'
+alias dotfiles='cd ~/Code/dotfiles'
 
 # ls
 alias ll='ls -lahFG'
@@ -56,6 +57,7 @@ alias kdb='kamal app exec --interactive "bin/rails dbconsole"'
 
 # system
 alias ref='source ~/.zshrc'
+alias zshrc='nano ~/.zshrc'
 
 # Svuota la cache del DNS del Mac (utile quando un sito non si carica dopo modifiche ai server)
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
