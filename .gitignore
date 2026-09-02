@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# Editors
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Backups
+*.bak
+*.tmp
+*.orig
