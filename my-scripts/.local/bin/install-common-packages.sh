@@ -59,7 +59,7 @@ else
     read -p "Vuoi installarli/aggiornarli ora? (s/N): " choice
     if [[ "$choice" =~ ^[sS]$ ]]; then
         if [ "$OS" == "arch" ]; then
-            sudo pacman -S --needed "${MISSING[@]}"
+            paru -S --needed "${MISSING[@]}"
         elif [ "$OS" == "macos" ]; then
             brew install "${MISSING[@]}"
         fi

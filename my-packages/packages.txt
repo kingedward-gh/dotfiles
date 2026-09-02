@@ -9,7 +9,7 @@ zsh | zsh
 fastfetch | fastfetch
 btop | btop
 nano | nano
-nvim | nvim
+neovim | neovim
 stow | stow
 eza | eza
 zoxide | zoxide

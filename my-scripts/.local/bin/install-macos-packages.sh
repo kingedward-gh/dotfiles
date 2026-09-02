@@ -11,6 +11,11 @@ if [[ "$OSTYPE" != "darwin"* ]]; then
     exit 0
 fi
 
+if [ ! -f "$PKG_FILE" ]; then
+    echo "❌ File $PKG_FILE non trovato!"
+    exit 1
+fi
+
 echo "🔍 Controllo pacchetti [MACOS]..."
 echo "--------------------------------------------------"
 
