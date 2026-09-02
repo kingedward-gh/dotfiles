@@ -1,0 +1,22 @@
+# Snapshot 2026-09-02 — inventory, NOT the install list (that is packages.txt)
+# Command: brew leaves + brew list --cask
+
+[FORMULAE]
+btop
+cmatrix
+fastfetch
+gh
+graphviz
+htop
+imagesnap
+lazydocker
+lazygit
+mole
+postgresql@18
+rbenv
+stow
+stripe/stripe-cli/stripe
+vips
+
+[CASKS]
+rectangle

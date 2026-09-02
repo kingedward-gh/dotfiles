@@ -1,9 +1,13 @@
 # ==============================================================================
-# LISTA PACCHETTI CONDIVISI E SPECIFICI (macOS & Arch)
-# Syntax: nome_pacchetto_brew | nome_pacchetto_arch
+# SHARED AND OS-SPECIFIC PACKAGE LIST (macOS & Arch)
+# Syntax: brew_package_name | arch_package_name
+#
+# Subsections are comments (## dev), NOT [DEV]: scripts stop at the
+# next line starting with [, so only [COMMON] [MACOS] [ARCH] are sections.
 # ==============================================================================
 
 [COMMON]
+## shell
 zsh | zsh
 # oh-my-zsh & plugins
 fastfetch | fastfetch
@@ -19,16 +23,32 @@ yazi | yazi
 # jq | jq
 cmatrix | cmatrix
 pipes-sh | pipes-sh
+
+## git
+gh | gh
+lazygit | lazygit
+
+## apps
 cursor | cursor
 docker | docker
 lazydocker | lazydocker
+google-chrome | google-chrome
+
+## dev (rails)
 rbenv | rbenv
 rails | rails
-google-chrome | google-chrome
+graphviz | graphviz
+vips | libvips
+postgresql@18 | postgresql
 
 [MACOS]
 iterm2
 mole
+rectangle
+
+## dev
+imagesnap
+stripe/stripe-cli/stripe
 
 [ARCH]
 omarchy

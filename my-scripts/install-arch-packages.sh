@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # ==============================================================================
-# Check & Install: PACCHETTI ARCH ONLY
+# Check & Install: ARCH-ONLY PACKAGES
 # ==============================================================================
 
 PKG_FILE="$HOME/Code/dotfiles/my-packages/packages.txt"
 
 if [ ! -f /etc/arch-release ]; then
-    echo "⚠️  Questo script è inteso solo per Arch Linux."
+    echo "⚠️  This script is for Arch Linux only."
     exit 0
 fi
 
 if [ ! -f "$PKG_FILE" ]; then
-    echo "❌ File $PKG_FILE non trovato!"
+    echo "❌ File $PKG_FILE not found!"
     exit 1
 fi
 
-echo "🔍 Controllo pacchetti [ARCH]..."
+echo "🔍 Checking [ARCH] packages..."
 echo "--------------------------------------------------"
 
 ARCH_LINES=$(sed -n '/^\[ARCH\]/,/^\[/p' "$PKG_FILE" | grep -v '^\[' | grep -v '^\s*#' | grep -v '^\s*$')
@@ -29,7 +29,7 @@ while IFS= read -r pkg; do
         VER=$(pacman -Q "$pkg" 2>/dev/null | awk '{print $2}')
         echo "  [✓] $pkg ($VER)"
     else
-        echo "  [✗] $pkg (Mancante)"
+        echo "  [✗] $pkg (missing)"
         MISSING+=("$pkg")
     fi
 done <<< "$ARCH_LINES"
@@ -37,11 +37,11 @@ done <<< "$ARCH_LINES"
 echo "--------------------------------------------------"
 
 if [ ${#MISSING[@]} -eq 0 ]; then
-    echo "🎉 Tutti i pacchetti [ARCH] sono installati!"
+    echo "🎉 All [ARCH] packages are installed!"
 else
-    echo "⚠️  Pacchetti mancanti: ${MISSING[*]}"
-    read -p "Vuoi installarli/aggiornarli con paru/pacman? (s/N): " choice
-    if [[ "$choice" =~ ^[sS]$ ]]; then
+    echo "⚠️  Missing packages: ${MISSING[*]}"
+    read -p "Install/update them with paru/pacman? (y/N): " choice
+    if [[ "$choice" =~ ^[yY]$ ]]; then
         paru -S --needed "${MISSING[@]}"
     fi
 fi

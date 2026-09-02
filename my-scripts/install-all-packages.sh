@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# Check & Install: TUTTI I PACCHETTI (COMMON + OS-SPECIFIC)
+# Check & Install: ALL PACKAGES (COMMON + OS-SPECIFIC)
 # ==============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,11 +13,11 @@ elif [ -f /etc/arch-release ]; then
     OS="arch"
     OS_SCRIPT="$SCRIPT_DIR/install-arch-packages.sh"
 else
-    echo "❌ Sistema operativo non supportato."
+    echo "❌ Unsupported operating system."
     exit 1
 fi
 
-echo "🖥️  Sistema rilevato: $OS"
+echo "🖥️  Detected OS: $OS"
 echo ""
 
 "$SCRIPT_DIR/install-common-packages.sh" || exit $?
