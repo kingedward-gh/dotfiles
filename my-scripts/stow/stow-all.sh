@@ -5,7 +5,7 @@
 # ==============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 STOW_FILE="$REPO/my-packages/stow.txt"
 
 if ! command -v stow &>/dev/null; then
@@ -56,7 +56,7 @@ stow_packages() {
             continue
         fi
 
-        if stow -R -t "$HOME" -d "$REPO" "$pkg"; then
+        if stow --no-folding -R -t "$HOME" -d "$REPO" "$pkg"; then
             echo "  [✓] $pkg → \$HOME"
         else
             echo "  [✗] $pkg (stow error)"

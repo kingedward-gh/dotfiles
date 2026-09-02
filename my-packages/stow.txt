@@ -2,10 +2,12 @@
 # STOW PACKAGES (repo folders to symlink into $HOME)
 # Each line is a folder name under ~/Code/dotfiles
 # my-packages and my-scripts do NOT belong here: run them from the repo.
+# starlink-tracker is a thin stow wrapper around my-scripts/starlink.
 # ==============================================================================
 
 [COMMON]
 zsh
+starlink-tracker
 
 [MACOS]
 

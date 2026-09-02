@@ -20,7 +20,7 @@ zoxide | zoxide
 fzf | fzf
 bat | bat
 yazi | yazi
-# jq | jq
+jq | jq
 cmatrix | cmatrix
 pipes-sh | pipes-sh
 
