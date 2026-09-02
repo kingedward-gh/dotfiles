@@ -1,0 +1,15 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.preferredLightColorTheme": "Default Light Modern",
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "cursor.composer.shouldChimeAfterChatFinishes": true,
+    "cursor.composer.usageSummaryDisplay": "always",
+    "git.confirmSync": false,
+    "bookmarks.treeLabelMode": "name",
+    "diffEditor.renderSideBySide": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Solarized Light"
+}

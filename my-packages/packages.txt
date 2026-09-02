@@ -20,6 +20,7 @@ zoxide | zoxide
 fzf | fzf
 bat | bat
 yazi | yazi
+curl | curl
 jq | jq
 cmatrix | cmatrix
 pipes-sh | pipes-sh
@@ -36,7 +37,6 @@ google-chrome | google-chrome
 
 ## dev (rails)
 rbenv | rbenv
-rails | rails
 graphviz | graphviz
 vips | libvips
 postgresql@18 | postgresql
