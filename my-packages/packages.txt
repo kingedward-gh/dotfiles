@@ -1,0 +1,37 @@
+# ==============================================================================
+# LISTA PACCHETTI CONDIVISI E SPECIFICI (macOS & Arch)
+# Syntax: nome_pacchetto_brew | nome_pacchetto_arch
+# ==============================================================================
+
+[COMMON]
+zsh | zsh
+# oh-my-zsh & plugins
+fastfetch | fastfetch
+btop | btop
+nano | nano
+nvim | nvim
+stow | stow
+eza | eza
+zoxide | zoxide
+fzf | fzf
+bat | bat
+yazi | yazi
+# jq | jq
+cmatrix | cmatrix
+pipes-sh | pipes-sh
+cursor | cursor
+docker | docker
+lazydocker | lazydocker
+rbenv | rbenv
+rails | rails
+google-chrome | google-chrome
+
+[MACOS]
+iterm2
+mole
+
+[ARCH]
+omarchy
+hyprland
+quickshell
+foot
