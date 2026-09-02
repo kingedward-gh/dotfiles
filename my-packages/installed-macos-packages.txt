@@ -2,21 +2,33 @@
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
+bat
 btop
 cmatrix
+curl
+docker
+eza
 fastfetch
+fzf
 gh
 graphviz
-htop
 imagesnap
+jq
 lazydocker
 lazygit
 mole
+nano
+neovim
+pipes-sh
 postgresql@18
 rbenv
 stow
 stripe/stripe-cli/stripe
 vips
+yazi
+zoxide
+zsh
 
 [CASKS]
+iterm2
 rectangle

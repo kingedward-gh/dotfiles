@@ -10,6 +10,9 @@ zsh
 starlink-tracker
 
 [MACOS]
+iterm2
+cursor-macos
 
 [ARCH]
 foot
+cursor
