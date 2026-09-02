@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # ==============================================================================
-# Check & Install: PACCHETTI CONDIVISI (COMMON)
+# Check & Install: SHARED PACKAGES (COMMON)
 # ==============================================================================
 
 PKG_FILE="$HOME/Code/dotfiles/my-packages/packages.txt"
 
 if [ ! -f "$PKG_FILE" ]; then
-    echo "❌ File $PKG_FILE non trovato!"
+    echo "❌ File $PKG_FILE not found!"
     exit 1
 fi
 
-# Rileva il Sistema Operativo
+# Detect operating system
 OS="unknown"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     OS="macos"
@@ -19,11 +19,11 @@ elif [ -f /etc/arch-release ]; then
     OS="arch"
 fi
 
-echo "🖥️  Sistema rilevato: $OS"
-echo "🔍 Controllo pacchetti [COMMON]..."
+echo "🖥️  Detected OS: $OS"
+echo "🔍 Checking [COMMON] packages..."
 echo "--------------------------------------------------"
 
-# Estrai la sezione [COMMON]
+# Extract the [COMMON] section
 COMMON_LINES=$(sed -n '/^\[COMMON\]/,/^\[/p' "$PKG_FILE" | grep -v '^\[' | grep -v '^\s*#' | grep -v '^\s*$')
 
 MISSING=()
@@ -37,14 +37,14 @@ while IFS= read -r line; do
             VER=$(pacman -Q "$ARCH_PKG" 2>/dev/null | awk '{print $2}')
             echo "  [✓] $ARCH_PKG ($VER)"
         else
-            echo "  [✗] $ARCH_PKG (Mancante)"
+            echo "  [✗] $ARCH_PKG (missing)"
             MISSING+=("$ARCH_PKG")
         fi
     elif [ "$OS" == "macos" ]; then
         if brew list "$BREW_PKG" &>/dev/null; then
             echo "  [✓] $BREW_PKG"
         else
-            echo "  [✗] $BREW_PKG (Mancante)"
+            echo "  [✗] $BREW_PKG (missing)"
             MISSING+=("$BREW_PKG")
         fi
     fi
@@ -53,11 +53,11 @@ done <<< "$COMMON_LINES"
 echo "--------------------------------------------------"
 
 if [ ${#MISSING[@]} -eq 0 ]; then
-    echo "🎉 Tutti i pacchetti [COMMON] sono già installati!"
+    echo "🎉 All [COMMON] packages are already installed!"
 else
-    echo "⚠️  Pacchetti mancanti: ${MISSING[*]}"
-    read -p "Vuoi installarli/aggiornarli ora? (s/N): " choice
-    if [[ "$choice" =~ ^[sS]$ ]]; then
+    echo "⚠️  Missing packages: ${MISSING[*]}"
+    read -p "Install/update them now? (y/N): " choice
+    if [[ "$choice" =~ ^[yY]$ ]]; then
         if [ "$OS" == "arch" ]; then
             paru -S --needed "${MISSING[@]}"
         elif [ "$OS" == "macos" ]; then
