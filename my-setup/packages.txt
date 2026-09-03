@@ -11,6 +11,7 @@
 zsh | zsh
 # oh-my-zsh & plugins
 stow | stow
+tmux | tmux
 nano | nano
 neovim | neovim
 eza | eza
