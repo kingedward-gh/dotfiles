@@ -1,26 +1,30 @@
 # ==============================================================================
-# SHARED AND OS-SPECIFIC PACKAGE LIST (macOS & Arch)
+# SHARED AND OS-SPECIFIC PACKAGE LIST (macOS, Arch, Ubuntu)
 # Syntax: brew_package_name | arch_package_name
 #
 # Subsections are comments (## dev), NOT [DEV]: scripts stop at the
-# next line starting with [, so only [COMMON] [MACOS] [ARCH] are sections.
+# next line starting with [, so only [COMMON] [MACOS] [ARCH] [UBUNTU] are sections.
+# [COMMON] is macOS + Arch only. Ubuntu (VPS) uses the [UBUNTU] section.
 # ==============================================================================
 
 [COMMON]
 ## shell
 zsh | zsh
 # oh-my-zsh & plugins
-stow | stow
+curl | curl
+jq | jq
 tmux | tmux
-nano | nano
-neovim | neovim
+stow | stow
 eza | eza
 zoxide | zoxide
 fzf | fzf
 bat | bat
 yazi | yazi
-curl | curl
-jq | jq
+
+## editors
+nano | nano
+neovim | neovim
+cursor | cursor-bin
 
 ## apps
 google-chrome | google-chrome
@@ -37,7 +41,6 @@ bandwhich | bandwhich
 ## dev
 gh | github-cli
 lazygit | lazygit
-cursor | cursor-bin
 docker | docker
 lazydocker | lazydocker
 
@@ -66,3 +69,12 @@ omarchy
 hyprland
 quickshell
 foot
+
+[UBUNTU]
+tmux
+fastfetch
+btop
+glances
+tailspin
+# pg_activity
+lazydocker
