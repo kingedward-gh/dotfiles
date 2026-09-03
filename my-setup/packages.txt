@@ -23,14 +23,14 @@ yazi | yazi
 curl | curl
 jq | jq
 cmatrix | cmatrix
-pipes-sh | pipes-sh
+pipes-sh | pipes.sh
 
 ## git
-gh | gh
+gh | github-cli
 lazygit | lazygit
 
 ## apps
-cursor | cursor
+cursor | cursor-bin
 docker | docker
 lazydocker | lazydocker
 google-chrome | google-chrome
