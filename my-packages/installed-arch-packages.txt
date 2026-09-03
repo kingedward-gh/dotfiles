@@ -23,6 +23,7 @@ cups
 cups-browsed
 cups-filters
 cups-pdf
+cursor-bin
 ddcutil
 docker
 docker-buildx
