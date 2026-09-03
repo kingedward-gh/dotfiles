@@ -12,10 +12,10 @@ Top-level folders are [GNU Stow](https://www.gnu.org/software/stow/) packages: e
 dotfiles/
 ├── zsh/              # zsh config —> Common
 ├── cursor/           # Cursor config —> Arch
-├── cursor-macos/     # Cursor config —> macOS
+├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
 ├── iterm2/           # iTerm2 config —> macOS
 ├── foot/             # Foot terminal config —> Arch
-├── starlink-tracker/ # starlink script (stow wrapper) —> Common
+├── starlink-tracker/ # starlink script —> Common (stow wrapper, do not edit)
 ├── my-setup/         # setup manifests 
 ├── my-packages/      # package inventory dump/snapshot
 └── my-scripts/       # install / dump / stow
