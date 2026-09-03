@@ -4,7 +4,7 @@
 # Check & Install: MACOS-ONLY PACKAGES
 # ==============================================================================
 
-PKG_FILE="$HOME/Code/dotfiles/my-packages/packages.txt"
+PKG_FILE="$HOME/Code/dotfiles/my-setup/packages.txt"
 
 if [[ "$OSTYPE" != "darwin"* ]]; then
     echo "⚠️  This script is for macOS only."

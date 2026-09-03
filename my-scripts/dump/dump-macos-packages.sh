@@ -20,7 +20,7 @@ fi
 mkdir -p "$(dirname "$OUT")"
 
 {
-    echo "# Snapshot $(date +%Y-%m-%d) — inventory, NOT the install list (that is packages.txt)"
+    echo "# Snapshot $(date +%Y-%m-%d) — inventory, NOT the install list (that is my-setup/packages.txt)"
     echo "# Command: brew leaves + brew list --cask"
     echo ""
     echo "[FORMULAE]"
