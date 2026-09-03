@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ==============================================================================
-# Stow: COMMON + OS-SPECIFIC packages from my-packages/stow.txt
+# Stow: COMMON + OS-SPECIFIC packages from my-setup/stow.txt
 # ==============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
-STOW_FILE="$REPO/my-packages/stow.txt"
+STOW_FILE="$REPO/my-setup/stow.txt"
 
 if ! command -v stow &>/dev/null; then
     echo "❌ stow is not installed."

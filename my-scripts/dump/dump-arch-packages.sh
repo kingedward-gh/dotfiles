@@ -20,7 +20,7 @@ fi
 mkdir -p "$(dirname "$OUT")"
 
 {
-    echo "# Snapshot $(date +%Y-%m-%d) — inventory, NOT the install list (that is packages.txt)"
+    echo "# Snapshot $(date +%Y-%m-%d) — inventory, NOT the install list (that is my-setup/packages.txt)"
     echo "# Command: pacman -Qeq  (explicit, repos + AUR)"
     echo ""
     pacman -Qeq

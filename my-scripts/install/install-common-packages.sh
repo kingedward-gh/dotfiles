@@ -4,7 +4,7 @@
 # Check & Install: SHARED PACKAGES (COMMON)
 # ==============================================================================
 
-PKG_FILE="$HOME/Code/dotfiles/my-packages/packages.txt"
+PKG_FILE="$HOME/Code/dotfiles/my-setup/packages.txt"
 
 if [ ! -f "$PKG_FILE" ]; then
     echo "❌ File $PKG_FILE not found!"

@@ -4,7 +4,7 @@
 # Check & Install: ARCH-ONLY PACKAGES
 # ==============================================================================
 
-PKG_FILE="$HOME/Code/dotfiles/my-packages/packages.txt"
+PKG_FILE="$HOME/Code/dotfiles/my-setup/packages.txt"
 
 if [ ! -f /etc/arch-release ]; then
     echo "⚠️  This script is for Arch Linux only."

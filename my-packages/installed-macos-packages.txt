@@ -1,4 +1,4 @@
-# Snapshot 2026-09-02 — inventory, NOT the install list (that is packages.txt)
+# Snapshot 2026-09-03 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
@@ -11,6 +11,7 @@ eza
 fastfetch
 fzf
 gh
+gping
 graphviz
 imagesnap
 jq
