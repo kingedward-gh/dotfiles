@@ -29,6 +29,7 @@ rbenv
 stow
 stripe/stripe-cli/stripe
 tailspin
+tmux
 vips
 yazi
 zoxide
