@@ -10,11 +10,9 @@
 ## shell
 zsh | zsh
 # oh-my-zsh & plugins
-fastfetch | fastfetch
-btop | btop
+stow | stow
 nano | nano
 neovim | neovim
-stow | stow
 eza | eza
 zoxide | zoxide
 fzf | fzf
@@ -22,24 +20,36 @@ bat | bat
 yazi | yazi
 curl | curl
 jq | jq
-cmatrix | cmatrix
-pipes-sh | pipes.sh
-
-## git
-gh | github-cli
-lazygit | lazygit
 
 ## apps
+google-chrome | google-chrome
+
+## monitoring
+fastfetch | fastfetch
+btop | btop
+glances | glances
+tailspin | tailspin
+# pg_activity | pg_activity
+gping | gping
+bandwhich | bandwhich
+
+## dev
+gh | github-cli
+lazygit | lazygit
 cursor | cursor-bin
 docker | docker
 lazydocker | lazydocker
-google-chrome | google-chrome
 
 ## dev (rails)
 rbenv | rbenv
 graphviz | graphviz
 vips | libvips
 postgresql@18 | postgresql
+
+## fun
+cmatrix | cmatrix
+pipes-sh | pipes.sh
+# terminaltexteffects | terminaltexteffects
 
 [MACOS]
 iterm2

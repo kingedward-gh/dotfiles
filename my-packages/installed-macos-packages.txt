@@ -2,6 +2,7 @@
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
+bandwhich
 bat
 btop
 cmatrix
@@ -11,6 +12,7 @@ eza
 fastfetch
 fzf
 gh
+glances
 gping
 graphviz
 imagesnap
@@ -21,10 +23,12 @@ mole
 nano
 neovim
 pipes-sh
+pipx
 postgresql@18
 rbenv
 stow
 stripe/stripe-cli/stripe
+tailspin
 vips
 yazi
 zoxide
