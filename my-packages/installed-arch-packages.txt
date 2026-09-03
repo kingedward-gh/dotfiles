@@ -4,6 +4,7 @@
 aether
 alsa-utils
 asdcontrol
+bandwhich
 base
 base-devel
 bash-completion
@@ -46,10 +47,12 @@ foot
 fzf
 git
 github-cli
+glances
 gnome-disk-utility
 gnome-keyring
 gnome-themes-extra
 google-chrome
+gping
 gpu-screen-recorder
 graphviz
 grim
@@ -144,6 +147,7 @@ stow
 sudo
 sushi
 system-config-printer
+tailspin
 tensaku
 tesseract
 tesseract-data-eng
