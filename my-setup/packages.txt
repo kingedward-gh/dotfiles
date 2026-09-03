@@ -75,6 +75,8 @@ tmux
 fastfetch
 btop
 glances
-tailspin
-# pg_activity
+pg_activity
+
+## standalone binaries (not in apt)
 lazydocker
+tailspin
