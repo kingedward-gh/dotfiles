@@ -75,7 +75,7 @@ tmux
 fastfetch
 btop
 glances
-pg_activity
+pg-activity
 
 ## standalone binaries (not in apt)
 lazydocker
