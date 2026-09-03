@@ -28,6 +28,29 @@ dotfiles/
 
 
 
+## Requirements
+
+Install these before running the install scripts.
+
+### macOS — [Homebrew](https://brew.sh)
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Arch — [paru](https://github.com/Morganamilo/paru)
+
+```bash
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+```
+
+---
+
+
+
 ## Install scripts
 
 Install packages listed in `my-setup/packages.txt`.
