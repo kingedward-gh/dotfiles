@@ -1,6 +1,6 @@
 # dotfiles
 
-Cross-platform sync of configs and scripts between **macOS** and **Arch Linux (omarchy)**.
+Cross-platform sync of configs and scripts between **macOS**, **Arch Linux (omarchy)**, and an **Ubuntu VPS**.
 
 Top-level folders are [GNU Stow](https://www.gnu.org/software/stow/) packages: each mirrors the `$HOME` layout and gets symlinked there by `stow-all.sh`.
 
@@ -47,6 +47,10 @@ cd paru
 makepkg -si
 ```
 
+### Ubuntu — apt
+
+apt is already on Ubuntu. No extra helper is required.
+
 ---
 
 
@@ -60,12 +64,13 @@ Install packages listed in `my-setup/packages.txt`.
 bash my-scripts/install/install-all-packages.sh
 
 # Or run individually:
-bash my-scripts/install/install-common-packages.sh   # shared packages
+bash my-scripts/install/install-common-packages.sh   # shared packages (macOS + Arch)
 bash my-scripts/install/install-macos-packages.sh    # macOS only (Homebrew)
 bash my-scripts/install/install-arch-packages.sh     # Arch only (pacman/paru)
+bash my-scripts/install/install-ubuntu-packages.sh   # Ubuntu only (apt)
 ```
 
-`packages.txt` uses `brew_name | arch_name` for shared packages; `[MACOS]` and `[ARCH]` sections hold OS-specific ones.
+`packages.txt` uses `brew_name | arch_name` for `[COMMON]` (macOS + Arch). `[MACOS]`, `[ARCH]`, and `[UBUNTU]` hold OS-specific packages. Ubuntu (VPS) installs **only** `[UBUNTU]`, not `[COMMON]`.
 
 ---
 
@@ -76,8 +81,9 @@ bash my-scripts/install/install-arch-packages.sh     # Arch only (pacman/paru)
 Save a snapshot of **currently installed** packages (useful to compare against `packages.txt`).
 
 ```bash
-bash my-scripts/dump/dump-macos-packages.sh   # → my-packages/installed-macos-packages.txt
-bash my-scripts/dump/dump-arch-packages.sh    # → my-packages/installed-arch-packages.txt
+bash my-scripts/dump/dump-macos-packages.sh    # → my-packages/installed-macos-packages.txt
+bash my-scripts/dump/dump-arch-packages.sh     # → my-packages/installed-arch-packages.txt
+bash my-scripts/dump/dump-ubuntu-packages.sh   # → my-packages/installed-ubuntu-packages.txt
 ```
 
 > Output files are inventory snapshots only — **not** the install list.
