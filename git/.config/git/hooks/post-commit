@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+PHOTO_DIR="$HOME/Code/_git-photos"
+mkdir -p "$PHOTO_DIR"
+
+REPO=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
+COMMIT_HASH=$(git log -1 --format="%h")
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+FILENAME="${PHOTO_DIR}/${TIMESTAMP}_${REPO}_${COMMIT_HASH}.jpg"
+
+if command -v imagesnap >/dev/null 2>&1; then
+  # -w 1.00 imposta 1 secondo di riscaldamento della webcam (evita foto nere/sottoesposte)
+  imagesnap -w 1.00 "$FILENAME" >/dev/null 2>&1
+  echo "📸 Foto del commit salvata in $FILENAME"
+else
+  echo "⚠️ Errore: imagesnap non è installato."
+fi
