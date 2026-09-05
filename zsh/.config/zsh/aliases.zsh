@@ -13,9 +13,16 @@ alias zshrc='nano ~/.zshrc'
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza --group-directories-first --color=auto'
   alias ll='eza -la --group-directories-first --color=auto --icons=auto'
+  alias la='eza -lah --group-directories-first --color=auto --icons=auto --git'
+  alias tree='eza --tree --icons'
+fi
+
+if command -v bat >/dev/null 2>&1; then
+  alias b='bat'
 fi
 
 # cd
+alias -- -='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
