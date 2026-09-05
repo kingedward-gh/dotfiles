@@ -44,9 +44,9 @@ alias glgg='git log --graph'
 alias glog='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short'
 alias gm='git merge'
 alias gl='git pull'
-alias ggl='git pull origin $(current_branch)'
+alias ggl='git pull origin $(git_current_branch)'
 alias gp='git push'
-alias ggp='git push origin $(current_branch)'
+alias ggp='git push origin $(git_current_branch)'
 alias gst='git status'
 
 # rails local
