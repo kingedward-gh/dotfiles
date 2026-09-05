@@ -41,6 +41,7 @@ setopt HIST_IGNORE_DUPS        # skip consecutive duplicates
 setopt HIST_IGNORE_SPACE       # skip commands that start with a space
 setopt HIST_VERIFY             # expand history before running
 setopt SHARE_HISTORY           # share history across sessions
+setopt NUMERIC_GLOB_SORT       # file10 after file9, not after file1
 
 
 ### path
@@ -66,6 +67,7 @@ eval "$(zoxide init zsh)"
 
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
+  source "${ZDOTDIR:-$HOME/.config/zsh}/fzf.zsh"
 fi
 
 
