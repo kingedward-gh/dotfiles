@@ -1,4 +1,4 @@
-# Snapshot 2026-09-03 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-05 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: pacman -Qeq  (explicit, repos + AUR)
 
 aether
@@ -21,9 +21,8 @@ clang
 cliamp
 cmatrix
 cups
-cups-browsed
 cups-filters
-cups-pdf
+cups-pk-helper
 cursor-bin
 ddcutil
 docker
