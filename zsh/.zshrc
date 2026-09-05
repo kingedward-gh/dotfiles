@@ -20,13 +20,36 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
-  git
+  aliases
+  # brew
+  # bundler
+  # docker
+  # eza
+  # fzf
+  gh
+  # git
+  # kamal
+  # macos
+  # postgres
+  # rails
+  rbenv
+  # ruby
+  # rvm
+  # themes
+  tmux
+  # vi-mode
+  # vscode
+  # z
+  # zoxide
+
+  # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   zsh-autosuggestions
-  zsh-syntax-highlighting
-  # fast-syntax-highlighting
-  emoji-clock
-  themes
-  # zsh-history-substring-search
+  
+  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  # zsh-syntax-highlighting
+
+  # git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+  fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
