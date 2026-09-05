@@ -48,6 +48,18 @@ alias ggl='git pull origin $(git_current_branch)'
 alias gp='git push'
 alias ggp='git push origin $(git_current_branch)'
 alias gst='git status'
+lazypush() {
+  if [ -z "$1" ]; then
+    echo "Errore: inserisci un messaggio per il commit."
+    echo "Uso: lazypush \"messaggio del commit\""
+    return 1
+  fi
+
+  git add --all && \
+  git commit --all --message "$1" && \
+  git push origin $(git_current_branch)
+}
+alias gg="lazypush"
 
 # rails local
 alias bd='bin/dev'
