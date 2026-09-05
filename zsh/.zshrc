@@ -19,10 +19,28 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  # fast-syntax-highlighting
   emoji-clock
   themes
+  # zsh-history-substring-search
 )
+
 source $ZSH/oh-my-zsh.sh
+
+
+### history (oh-my-zsh defaults, made explicit)
+
+# HIST_STAMPS above is read when oh-my-zsh.sh is sourced.
+HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt EXTENDED_HISTORY        # write timestamps to HISTFILE
+setopt HIST_EXPIRE_DUPS_FIRST  # drop dups first when trimming
+setopt HIST_IGNORE_DUPS        # skip consecutive duplicates
+setopt HIST_IGNORE_SPACE       # skip commands that start with a space
+setopt HIST_VERIFY             # expand history before running
+setopt SHARE_HISTORY           # share history across sessions
 
 
 ### path
@@ -39,93 +57,18 @@ export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
 
+### zoxide
+
+eval "$(zoxide init zsh)"
+
+
+### fzf
+
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
+
+
 ### aliases
 
-# cd
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ioartista='cd ~/Code/ioartista_it'
-alias dotfiles='cd ~/Code/dotfiles'
-
-# local rails
-alias bd='bin/dev'
-alias rs='bin/rails server'
-alias rc='bin/rails console'
-alias rdbc='bin/rails dbconsole'
-alias rdbm='bin/rails db:migrate'
-
-# rails production
-alias k='kamal'
-alias kd='kamal deploy'
-alias kl='kamal logs -f'
-alias kc='kamal app exec --interactive "bin/rails console"'
-alias kdb='kamal app exec --interactive "bin/rails dbconsole"'
-
-# git
-#alias gst='git status'
-#alias gad='git add .'
-#alias gcm='git commit -m'
-#alias gco='git checkout'
-#alias gcb='git checkout -b' # Create and switch to a new branch
-#alias gpl='git pull'
-#alias gps='git push'
-#alias ggl="git log --graph --oneline --decorate"
-#alias gdi='git diff'
-
-# system
-alias ref='source ~/.zshrc'
-alias zshrc='nano ~/.zshrc'
-
-
-### vps
-
-alias vps-connect='ssh ubuntu@145.239.72.166'
-alias vps-status="ssh -t ubuntu@145.239.72.166 '
-echo -e \"\033[1;36m===================================================\033[0m\"
-echo -e \"\033[1;33m 🚀 VPS DASHBOARD - \$(hostname) \033[0m\"
-echo -e \"\033[1;36m===================================================\033[0m\"
-echo -e \"\033[1;32m💻 CPU & LOAD:\033[0m\"
-echo -e \"   Model: \$(lscpu | grep \"Model name\" | cut -d\":\" -f2 | xargs)\"
-echo -e \"   Cores: \$(nproc) | Load Avg: \$(uptime | awk -F\"load average:\" \"{print \\\$2}\")\"
-echo \"\"
-echo -e \"\033[1;35m🧠 RAM:\033[0m\"
-free -h | awk \"NR==1{printf \\\"   %-10s %-10s %-10s %-10s\n\\\", \\\$2, \\\$3, \\\$4, \\\$7} NR==2{printf \\\"   %-10s %-10s %-10s %-10s\n\\\", \\\$2, \\\$3, \\\$4, \\\$7}\"
-echo \"\"
-echo -e \"\033[1;33m💾 DISK (/):\033[0m\"
-df -h / | awk \"NR==2{print \\\"   Used: \\\" \\\$3 \\\" / \\\" \\\$2 \\\" (\\\" \\\$5 \\\") - Free: \\\" \\\$4}\"
-echo \"\"
-echo -e \"\033[1;34m🐳 ACTIVE DOCKER CONTAINERS:\033[0m\"
-docker stats --no-stream --format \"table   \033[1m{{.Name}}\033[0m\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\"
-echo -e \"\033[1;36m===================================================\033[0m\"
-fastfetch
-'"
-
-
-# ==============================================================================
-# [MACOS]
-# ==============================================================================
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # ls (BSD: -G = color)
-  alias ll='ls -lahFG'
-
-  # Flush the Mac DNS cache (useful when a site fails to load after DNS changes)
-  alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-
-  # List listening TCP ports (if Rails or Postgres will not start because the port is taken, this shows who is using it)
-  alias portslis='sudo lsof -iTCP -sTCP:LISTEN -P'
-
-  # Copy your public SSH key to the clipboard to paste on GitHub/Bitbucket
-  alias pubkey="pbcopy < ~/.ssh/id_rsa.pub"
-fi
-
-
-# ==============================================================================
-# [ARCH]
-# ==============================================================================
-
-if [ -f /etc/arch-release ]; then
-  # ls (GNU: --color)
-  alias ll='ls -lahF --color=auto'
-fi
+source "${ZDOTDIR:-$HOME/.config/zsh}/aliases.zsh"

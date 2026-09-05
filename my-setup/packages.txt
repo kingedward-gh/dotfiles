@@ -17,17 +17,20 @@ tmux | tmux
 stow | stow
 eza | eza
 zoxide | zoxide
+fd | fd
 fzf | fzf
 bat | bat
 yazi | yazi
+ripgrep | ripgrep
 
 ## editors
 nano | nano
 neovim | neovim
-cursor | cursor-bin
+# cursor | cursor-bin
 
 ## apps
-google-chrome | google-chrome
+# google-chrome | google-chrome
+# librewolf | librewolf
 
 ## monitoring
 fastfetch | fastfetch
