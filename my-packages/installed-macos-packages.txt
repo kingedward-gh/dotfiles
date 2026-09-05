@@ -1,4 +1,4 @@
-# Snapshot 2026-09-03 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-05 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
@@ -10,6 +10,7 @@ curl
 docker
 eza
 fastfetch
+fd
 fzf
 gh
 glances
@@ -26,6 +27,7 @@ pipes-sh
 pipx
 postgresql@18
 rbenv
+ripgrep
 stow
 stripe/stripe-cli/stripe
 tailspin
@@ -36,5 +38,8 @@ zoxide
 zsh
 
 [CASKS]
+brave-browser
+font-jetbrains-mono-nerd-font
 iterm2
+librewolf
 rectangle
