@@ -12,5 +12,8 @@
     "files.autoSave": "afterDelay",
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "Default Light Modern",
-    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace"
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+    "files.exclude": {
+        "**/.git": false
+    }
 }

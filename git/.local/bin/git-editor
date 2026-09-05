@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -x /opt/homebrew/bin/nano ]; then
+  exec /opt/homebrew/bin/nano "$@"
+else
+  exec nano "$@"
+fi

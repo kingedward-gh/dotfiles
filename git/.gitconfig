@@ -2,7 +2,8 @@
 	name = Eduardo G
 	email = 304043171+kingedward-gh@users.noreply.github.com
 [core]
-	editor = nano
+	editor = ~/.local/bin/git-editor
+	hooksPath = ~/.config/git/hooks
 [alias]
 	aliases = config --get-regexp '^alias\\.'
 	stats = "!f() { FIRST=$(git log --reverse --format='%ad' --date=short | head -n 1); FIRST_SEC=$(date -j -f '%Y-%m-%d' \"$FIRST\" '+%s'); NOW_SEC=$(date +%s); DIFF=$(( (NOW_SEC - FIRST_SEC) / 86400 )); WORKED=$(git log --format='%ad' --date=short | sort -u | wc -l | tr -d ' '); TOTAL=$(git rev-list --count HEAD | tr -d ' '); echo \"=== STATISTICHE GIT ===\"; echo \"Data primo commit:         $FIRST\"; echo \"Giorni totali (da inizio): $DIFF\"; echo \"Giorni effettivi lavorati: $WORKED\"; echo \"Numero totale di commit:   $TOTAL\"; }; f"
