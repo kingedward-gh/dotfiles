@@ -6,7 +6,11 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-#ZSH_TEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="fino"
+# ZSH_THEME="bira"
+# ZSH_THEME="ys"
+# ZSH_THEME="bureau"
 
 # Tab-complete: - and _ are interchangeable
 HYPHEN_INSENSITIVE="true"
