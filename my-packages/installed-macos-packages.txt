@@ -1,4 +1,4 @@
-# Snapshot 2026-09-05 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-06 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
@@ -13,7 +13,6 @@ fastfetch
 fd
 fzf
 gh
-glances
 gping
 graphviz
 imagesnap
@@ -40,6 +39,8 @@ zsh
 [CASKS]
 brave-browser
 font-jetbrains-mono-nerd-font
+handy
 iterm2
 librewolf
+localsend
 rectangle

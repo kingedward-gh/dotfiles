@@ -78,7 +78,7 @@ setopt NUMERIC_GLOB_SORT       # file10 after file9, not after file1
 
 ### rbenv
 
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
 
@@ -91,10 +91,19 @@ eval "$(zoxide init zsh)"
 
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
-  source "${ZDOTDIR:-$HOME/.config/zsh}/fzf.zsh"
+  [[ -f "${ZDOTDIR:-$HOME/.config/zsh}/fzf.zsh" ]] && source "${ZDOTDIR:-$HOME/.config/zsh}/fzf.zsh"
 fi
 
 
 ### aliases
 
 source "${ZDOTDIR:-$HOME/.config/zsh}/aliases.zsh"
+
+
+### extras
+
+# Set the default editor to nano
+export EDITOR="nano"
+
+# Disable mail checking (to avoid delays when checking email)
+unset MAILCHECK
