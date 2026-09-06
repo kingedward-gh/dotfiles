@@ -9,8 +9,7 @@
 
 [COMMON]
 ## shell
-zsh | zsh
-# oh-my-zsh & plugins
+zsh | zsh # with oh-my-zsh & a few plugins
 curl | curl
 jq | jq
 tmux | tmux
@@ -23,23 +22,21 @@ bat | bat
 yazi | yazi
 ripgrep | ripgrep
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
+localsend | localsend-bin
 
 ## editors
 nano | nano
 neovim | neovim
-# cursor | cursor-bin
+cursor | cursor-bin
 
 ## apps
-# google-chrome | google-chrome
-# librewolf | librewolf
+google-chrome | google-chrome
 
 ## monitoring
 fastfetch | fastfetch
-btop | btop
-glances | glances
-tailspin | tailspin
-# pg_activity | pg_activity
 gping | gping
+btop | btop
+tailspin | tailspin
 bandwhich | bandwhich
 
 ## dev
@@ -57,7 +54,6 @@ postgresql@18 | postgresql
 ## fun
 cmatrix | cmatrix
 pipes-sh | pipes.sh
-# terminaltexteffects | terminaltexteffects
 
 [MACOS]
 iterm2
@@ -78,9 +74,8 @@ foot
 tmux
 fastfetch
 btop
-glances
-pgtop
 
 ## standalone binaries (not in apt)
+bandwhich
 lazydocker
 tailspin
