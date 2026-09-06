@@ -107,7 +107,7 @@ fastfetch
 '"
 alias vps-ping="gping vps 1.1.1.1"
 alias vps-btop="ssh -t vps btop"
-alias vps-logs="cd ~/Code/ioartista_it && kamal app logs -f | tspin"
+alias vps-logs="cd ~/Code/ioartista_it && kamal app logs -f | $(command -v gstdbuf || command -v stdbuf) -oL tspin"
 alias vps-docker="ssh -t vps lazydocker"
 
 # vps: additional commands
