@@ -59,6 +59,7 @@ pipes-sh | pipes.sh
 iterm2
 mole
 rectangle
+handy
 
 ## dev
 imagesnap

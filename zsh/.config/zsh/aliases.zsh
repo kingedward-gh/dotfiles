@@ -149,6 +149,9 @@ alias vps-bandwhich="ssh -t vps sudo bandwhich"
 # ==============================================================================
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  # nano: use English locale to avoid encoding issues
+  alias nano='LC_ALL=C nano'
+
   # Flush the Mac DNS cache (useful when a site fails to load after DNS changes)
   alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 

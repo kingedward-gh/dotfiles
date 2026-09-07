@@ -15,3 +15,5 @@ if command -v imagesnap >/dev/null 2>&1; then
 else
   echo "⚠️ Errore: imagesnap non è installato."
 fi
+
+git stats
