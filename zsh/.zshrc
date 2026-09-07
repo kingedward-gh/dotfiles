@@ -12,6 +12,8 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="ys"
 # ZSH_THEME="bureau"
 
+VSCODE=cursor
+
 # Tab-complete: - and _ are interchangeable
 HYPHEN_INSENSITIVE="true"
 # Faster git prompt in large repos (ignore untracked files)
@@ -38,9 +40,10 @@ plugins=(
   # themes
   tmux
   # vi-mode
-  # vscode
+  vscode
   # z
   # zoxide
+  zsh-interactive-cd
 
   # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   zsh-autosuggestions
