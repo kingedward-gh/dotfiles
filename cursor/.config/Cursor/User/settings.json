@@ -15,5 +15,12 @@
     "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
     "files.exclude": {
         "**/.git": false
-    }
+    },
+    "editor.wordWrap": "on",
+    "window.autoDetectColorScheme": true,
+    "cursor.composer.conversationDensity": "compact-ungrouped",
+    "cursor.composer.codeBlockWordWrap": true,
+    "workbench.reduceMotion": "on",
+    "cursor.general.emailPrivacyEnabled": true,
+    "cursor.worktreeMaxCount": 20
 }
