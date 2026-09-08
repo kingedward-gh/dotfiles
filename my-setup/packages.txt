@@ -23,6 +23,7 @@ yazi | yazi
 ripgrep | ripgrep
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
 localsend | localsend-bin
+# asciinema | asciinema
 
 ## editors
 nano | nano
@@ -54,6 +55,7 @@ postgresql@18 | postgresql
 ## fun
 cmatrix | cmatrix
 pipes-sh | pipes.sh
+cbonsai | cbonsai
 
 [MACOS]
 iterm2
