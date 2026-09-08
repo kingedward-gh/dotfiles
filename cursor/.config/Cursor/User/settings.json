@@ -22,5 +22,6 @@
     "cursor.composer.codeBlockWordWrap": true,
     "workbench.reduceMotion": "on",
     "cursor.general.emailPrivacyEnabled": true,
-    "cursor.worktreeMaxCount": 20
+    "cursor.worktreeMaxCount": 20,
+    "markdown.validate.enabled": true
 }
