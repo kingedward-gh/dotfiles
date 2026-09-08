@@ -43,7 +43,10 @@ plugins=(
   vscode
   # z
   # zoxide
-  zsh-interactive-cd
+  # zsh-interactive-cd
+
+  # git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+  fzf-tab
 
   # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   zsh-autosuggestions
@@ -110,3 +113,40 @@ export EDITOR="nano"
 
 # Disable mail checking (to avoid delays when checking email)
 unset MAILCHECK
+
+
+### zmv (batch rename/copy/link with patterns)
+
+autoload -Uz zmv
+alias zcp='zmv -C'
+alias zln='zmv -L'
+
+
+### zle widgets
+
+# Ctrl+X L: clear screen but keep the current command buffer
+function clear-screen-and-scrollback() {
+  echoti civis >"$TTY"
+  printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
+  echoti cnorm >"$TTY"
+  zle redisplay
+}
+zle -N clear-screen-and-scrollback
+bindkey '^Xl' clear-screen-and-scrollback
+
+# Ctrl+X C: copy current command buffer to clipboard
+function copy-buffer-to-clipboard() {
+  if command -v pbcopy >/dev/null 2>&1; then
+    echo -n "$BUFFER" | pbcopy
+  elif command -v wl-copy >/dev/null 2>&1; then
+    echo -n "$BUFFER" | wl-copy
+  elif command -v xclip >/dev/null 2>&1; then
+    echo -n "$BUFFER" | xclip -selection clipboard
+  else
+    zle -M "No clipboard command found"
+    return
+  fi
+  zle -M "Copied to clipboard"
+}
+zle -N copy-buffer-to-clipboard
+bindkey '^Xc' copy-buffer-to-clipboard

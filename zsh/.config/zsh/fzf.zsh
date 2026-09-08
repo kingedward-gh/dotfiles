@@ -20,6 +20,10 @@ export FZF_DEFAULT_OPTS='
 export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
 
+# Ctrl+G: cd fuzzy (fzf default is Alt+C, awkward on IT keyboards)
+bindkey -r '\ec'
+bindkey '^G' fzf-cd-widget
+
 # Ctrl+F: file picker excluding hidden files
 _fzf_file_no_hidden() {
   local cmd result
