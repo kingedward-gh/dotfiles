@@ -150,3 +150,8 @@ function copy-buffer-to-clipboard() {
 }
 zle -N copy-buffer-to-clipboard
 bindkey '^Xc' copy-buffer-to-clipboard
+
+# Option+Left / Option+Right: move by word (macOS text-field convention).
+# Ctrl+arrows switch Spaces; Alt+B/F need Option-as-Meta and steal ~ [ {.
+bindkey '^[[1;3D' backward-word
+bindkey '^[[1;3C' forward-word
