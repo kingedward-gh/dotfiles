@@ -1,7 +1,7 @@
 {
     "editor.renderWhitespace": "all",
     "editor.multiCursorModifier": "ctrlCmd",
-    "workbench.preferredLightColorTheme": "Default Light Modern",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.preferredDarkColorTheme": "Default Dark Modern",
     "cursor.composer.shouldChimeAfterChatFinishes": true,
     "cursor.composer.usageSummaryDisplay": "always",
@@ -11,17 +11,22 @@
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",
     "explorer.confirmDelete": false,
-    "workbench.colorTheme": "Default Light Modern",
+    "workbench.colorTheme": "Catppuccin Latte",
     "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
     "files.exclude": {
         // "**/.git": false
     },
     "editor.wordWrap": "on",
-    "window.autoDetectColorScheme": true,
     "cursor.composer.conversationDensity": "compact-ungrouped",
     "cursor.composer.codeBlockWordWrap": true,
     "workbench.reduceMotion": "on",
     "cursor.general.emailPrivacyEnabled": true,
     "cursor.worktreeMaxCount": 20,
-    "markdown.validate.enabled": true
+    "markdown.validate.enabled": true,
+    "editor.tabSize": 2,
+    "[yaml]": {
+        "editor.tabSize": 2
+    },
+    "editor.cursorStyle": "block",
+    "workbench.iconTheme": "catppuccin-latte"
 }
