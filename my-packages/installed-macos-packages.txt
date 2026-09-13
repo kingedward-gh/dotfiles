@@ -1,11 +1,15 @@
-# Snapshot 2026-09-06 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-13 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
+asciinema
 bandwhich
 bat
+bjarneo/cliamp/cliamp
 btop
+cbonsai
 cmatrix
+coreutils
 curl
 docker
 eza
@@ -17,6 +21,7 @@ gping
 graphviz
 imagesnap
 jq
+kew
 lazydocker
 lazygit
 mole
@@ -28,7 +33,6 @@ postgresql@18
 rbenv
 ripgrep
 stow
-stripe/stripe-cli/stripe
 tailspin
 tmux
 vips

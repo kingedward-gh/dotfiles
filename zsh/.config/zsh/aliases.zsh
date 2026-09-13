@@ -21,6 +21,13 @@ if command -v bat >/dev/null 2>&1; then
   alias b='bat'
 fi
 
+# man page via fzf (`compgen` is bash-only; ${(k)commands} is the zsh equivalent)
+fman() {
+  local cmd
+  cmd=$(print -rl -- ${(k)commands} | fzf) || return
+  man "$cmd"
+}
+
 # cd
 alias -- -='cd -'
 alias ..='cd ..'
@@ -60,6 +67,7 @@ lazypush() {
   git push origin $(git branch --show-current)
 }
 alias gg="lazypush"
+alias lg='lazygit'
 
 # rails local
 alias bd='bin/dev'
