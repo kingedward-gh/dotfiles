@@ -63,6 +63,7 @@ iterm2
 mole
 rectangle
 handy
+mactop
 
 ## dev
 imagesnap
