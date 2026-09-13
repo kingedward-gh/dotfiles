@@ -8,6 +8,7 @@
 [COMMON]
 zsh
 git
+fastfetch
 starlink-tracker
 
 [MACOS]

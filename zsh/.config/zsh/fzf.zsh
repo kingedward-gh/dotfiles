@@ -4,7 +4,7 @@
 
 # fzf configuration
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix'  # strip-cwd-prefix removes the leading ./ from results
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix --exclude .git'  # strip-cwd-prefix removes the leading ./ from results
 
 # Ctrl-T uses fd
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -21,6 +21,10 @@ export FZF_DEFAULT_OPTS='
 
 export _FZF_PREVIEW_CMD='bat --color=always --style=plain,numbers --line-range=:500 {}'
 export FZF_CTRL_T_OPTS="--preview '$_FZF_PREVIEW_CMD'"
+
+# Ctrl+G uses fzf-cd-widget, which still reads FZF_ALT_C_*
+export FZF_ALT_C_COMMAND='fd --type d --hidden --strip-cwd-prefix --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'eza --icons --tree --color=always {} | head -200'"
 
 # Ctrl+G: cd fuzzy (fzf default is Alt+C, awkward on IT keyboards)
 bindkey -r '\ec'

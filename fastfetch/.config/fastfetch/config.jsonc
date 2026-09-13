@@ -1,0 +1,81 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "modules": [
+    "title",             // username @ hostname
+    "separator",         // separator line
+    "host",              // computer product name
+    "os",                // OS / distro name and version
+    // "bios",           // first-stage bootloader
+    // "bootmgr",        // second-stage bootloader
+    // "board",          // motherboard
+    // "chassis",        // chassis type (desktop, laptop, …)
+    "kernel",            // kernel version
+    // "initsystem",     // init system (pid 1)
+    "uptime",            // how long the system has been running
+    // "loadavg",        // load averages
+    // "processes",      // running processes and threads
+    "packages",          // installed package counts
+    "display",           // resolutions, refresh rates
+    // "brightness",     // monitor brightness
+    // "monitor",        // like display, different default format
+    // "lm",             // login / display manager
+    "de",                // desktop environment
+    "wm",                // window manager
+    "wmtheme",           // window manager theme
+    "theme",             // desktop theme
+    "icons",             // icon style
+    "font",              // system fonts
+    "cursor",            // cursor style
+    // "wallpaper",      // current wallpaper path
+    "terminal",          // current terminal
+    "terminalfont",      // terminal font
+    "shell",             // current shell
+    "editor",         // $VISUAL / $EDITOR
+    // "terminalsize",   // terminal size
+    // "terminaltheme",  // terminal fg / bg colors
+    "cpu",               // CPU name, frequency
+    // "cpucache",       // CPU cache sizes
+    // "cpuusage",       // CPU usage (slow)
+    "gpu",               // GPU name, memory
+    // "codec",          // hardware video codecs
+    "memory",            // RAM usage
+    // "physicalmemory", // physical memory devices
+    "swap",              // swap usage
+    "disk",              // partitions, space, filesystem
+    // "btrfs",          // Btrfs volumes
+    // "zpool",          // ZFS pools
+    // "physicaldisk",   // physical disks
+    // "diskio",         // disk I/O throughput
+    "localip",           // local IP / MAC
+    // "publicip",       // public IP (network)
+    // "dns",            // DNS servers
+    // "wifi",           // connected Wi-Fi
+    // "netio",          // network I/O throughput
+    // "battery",           // battery
+    // "poweradapter",      // power adapter / charging watts
+    // "player",         // active music player
+    // "media",          // currently playing song
+    // "datetime",       // date and time
+    // "locale",            // system locale
+    // "users",          // logged-in users
+    // "bluetooth",      // connected Bluetooth devices
+    // "bluetoothradio", // Bluetooth radios
+    // "sound",          // sound devices / volume
+    // "camera",         // cameras
+    // "gamepad",        // gamepads
+    // "mouse",          // mice
+    // "keyboard",       // keyboards
+    // "top",            // top processes
+    // "vulkan",         // Vulkan version
+    // "opengl",         // OpenGL version
+    // "opencl",         // OpenCL version
+    // "weather",        // weather (network)
+    // "tpm",            // TPM
+    // "version",        // fastfetch version
+    // "command",        // run a custom command
+    // "custom",         // print a custom string
+    // "logo",           // built-in logo (JSON output)
+    // "break",             // empty line
+    // "colors"             // 16-color palette
+  ]
+}
