@@ -27,6 +27,8 @@
     "[yaml]": {
         "editor.tabSize": 2
     },
-    "editor.cursorStyle": "block",
-    "workbench.iconTheme": "catppuccin-latte"
+    "workbench.iconTheme": "catppuccin-latte",
+    "cursor.cpp.disabledLanguages": [
+        "markdown"
+    ]
 }

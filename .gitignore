@@ -67,5 +67,8 @@
 .vscode
 *.code-workspace
 
+# Cursor runtime cache
+statsig-cache.json
+
 # Edu
 _ignore/
