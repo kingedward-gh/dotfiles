@@ -28,6 +28,12 @@ fman() {
   man "$cmd"
 }
 
+# mkdir and move
+# Crea la cartella di destinazione (se non esiste) e sposta i file
+mvm() {
+  mkdir -p "${@:-1}" && mv "$@"
+}
+
 # cd
 alias -- -='cd -'
 alias ..='cd ..'
@@ -44,7 +50,7 @@ alias gb='git branch'
 alias gba='git branch --all'
 alias gco='git checkout'
 alias gcb='git checkout -b'
-alias gcam='git commit --all --message'
+alias gcam='git commit --message'
 alias gcf='git config --list'
 alias gd='git diff'
 alias glgg='git log --graph'

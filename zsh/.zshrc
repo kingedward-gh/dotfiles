@@ -14,6 +14,9 @@ ZSH_THEME="robbyrussell"
 
 VSCODE=cursor
 
+# Move the completion dump file to the .cache folder
+export ZSH_COMPDUMP="$HOME/.cache/.zcompdump-$HOST-$ZSH_VERSION"
+
 # Tab-complete: - and _ are interchangeable
 HYPHEN_INSENSITIVE="true"
 # Faster git prompt in large repos (ignore untracked files)
@@ -114,5 +117,6 @@ unset MAILCHECK
 ### zmv (batch rename/copy/link with patterns)
 
 autoload -Uz zmv
+# alias zmv='zmv'
 alias zcp='zmv -C'
 alias zln='zmv -L'

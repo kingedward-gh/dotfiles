@@ -9,6 +9,8 @@
 zsh
 git
 fastfetch
+btop
+cliamp
 starlink-tracker
 
 [MACOS]
