@@ -34,7 +34,11 @@ mvm() {
   mkdir -p "${@:-1}" && mv "$@"
 }
 
+# misc
+alias x='exit'
+
 # cd
+alias home='cd ~'
 alias -- -='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'

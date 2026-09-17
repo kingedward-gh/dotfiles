@@ -40,6 +40,7 @@ plugins=(
   rbenv
   # ruby
   # rvm
+  thefuck
   # themes
   tmux
   # vi-mode

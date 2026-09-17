@@ -25,6 +25,7 @@ ripgrep | ripgrep
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
 localsend | localsend-bin
 # asciinema | asciinema
+thefuck | thefuck
 
 ## editors
 nano | nano
