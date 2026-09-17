@@ -14,14 +14,16 @@ dotfiles/
 ├── cursor/           # Cursor config —> Arch
 ├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
 ├── iterm2/           # iTerm2 config —> macOS
+├── rectangle/        # Rectangle config —> macOS
 ├── foot/             # Foot terminal config —> Arch
 ├── starlink-tracker/ # starlink script —> Common (stow wrapper, do not edit)
-├── my-setup/         # setup manifests 
-├── my-packages/      # package inventory dump/snapshot
+├── my-setup/         # setup manifests
+├── my-dump/          # package inventory dump/snapshot
 └── my-scripts/       # install / dump / stow
     ├── install/
     ├── dump/
-    └── stow/
+    ├── stow/
+    └── starlink-tracker/
 ```
 
 ---
@@ -38,6 +40,8 @@ Install these before running the install scripts.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+
+
 ### Arch — [paru](https://github.com/Morganamilo/paru)
 
 ```bash
@@ -46,6 +50,8 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 ```
+
+
 
 ### Ubuntu — apt
 
@@ -61,13 +67,13 @@ Install packages listed in `my-setup/packages.txt`.
 
 ```bash
 # Install everything (COMMON + OS-specific) — auto-detects OS
-bash my-scripts/install/install-all-packages.sh
+bash my-scripts/install/install-all.sh
 
 # Or run individually:
-bash my-scripts/install/install-common-packages.sh   # shared packages (macOS + Arch)
-bash my-scripts/install/install-macos-packages.sh    # macOS only (Homebrew)
-bash my-scripts/install/install-arch-packages.sh     # Arch only (pacman/paru)
-bash my-scripts/install/install-ubuntu-packages.sh   # Ubuntu only (apt)
+bash my-scripts/install/install-common.sh   # shared packages (macOS + Arch)
+bash my-scripts/install/install-macos.sh    # macOS only (Homebrew)
+bash my-scripts/install/install-arch.sh     # Arch only (pacman/paru)
+bash my-scripts/install/install-ubuntu.sh   # Ubuntu only (apt)
 ```
 
 `packages.txt` uses `brew_name | arch_name` for `[COMMON]` (macOS + Arch). `[MACOS]`, `[ARCH]`, and `[UBUNTU]` hold OS-specific packages. Ubuntu (VPS) installs **only** `[UBUNTU]`, not `[COMMON]`.
@@ -81,9 +87,9 @@ bash my-scripts/install/install-ubuntu-packages.sh   # Ubuntu only (apt)
 Save a snapshot of **currently installed** packages (useful to compare against `packages.txt`).
 
 ```bash
-bash my-scripts/dump/dump-macos-packages.sh    # → my-packages/installed-macos-packages.txt
-bash my-scripts/dump/dump-arch-packages.sh     # → my-packages/installed-arch-packages.txt
-bash my-scripts/dump/dump-ubuntu-packages.sh   # → my-packages/installed-ubuntu-packages.txt
+bash my-scripts/dump/dump-macos.sh    # → my-dump/macos-dump.txt
+bash my-scripts/dump/dump-arch.sh     # → my-dump/arch-dump.txt
+bash my-scripts/dump/dump-ubuntu.sh   # → my-dump/ubuntu-dump.txt
 ```
 
 > Output files are inventory snapshots only — **not** the install list.

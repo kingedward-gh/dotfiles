@@ -2,10 +2,10 @@
 
 # ==============================================================================
 # Snapshot: manually installed apt packages (not auto dependencies)
-# Output: my-packages/installed-ubuntu-packages.txt
+# Output: my-dump/ubuntu-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-packages/installed-ubuntu-packages.txt"
+OUT="$HOME/Code/dotfiles/my-dump/ubuntu-dump.txt"
 
 if [ ! -f /etc/os-release ] || ! grep -qi '^ID=ubuntu' /etc/os-release; then
     echo "⚠️  This script is for Ubuntu only."

@@ -8,15 +8,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     OS="macos"
-    OS_SCRIPT="$SCRIPT_DIR/install-macos-packages.sh"
+    OS_SCRIPT="$SCRIPT_DIR/install-macos.sh"
     RUN_COMMON=true
 elif [ -f /etc/arch-release ]; then
     OS="arch"
-    OS_SCRIPT="$SCRIPT_DIR/install-arch-packages.sh"
+    OS_SCRIPT="$SCRIPT_DIR/install-arch.sh"
     RUN_COMMON=true
 elif [ -f /etc/os-release ] && grep -qi '^ID=ubuntu' /etc/os-release; then
     OS="ubuntu"
-    OS_SCRIPT="$SCRIPT_DIR/install-ubuntu-packages.sh"
+    OS_SCRIPT="$SCRIPT_DIR/install-ubuntu.sh"
     RUN_COMMON=false
 else
     echo "❌ Unsupported operating system."
@@ -27,7 +27,7 @@ echo "🖥️  Detected OS: $OS"
 echo ""
 
 if [ "$RUN_COMMON" = true ]; then
-    "$SCRIPT_DIR/install-common-packages.sh" || exit $?
+    "$SCRIPT_DIR/install-common.sh" || exit $?
     echo ""
 fi
 

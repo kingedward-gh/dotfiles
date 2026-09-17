@@ -11,6 +11,7 @@
 ## shell
 zsh | zsh # with oh-my-zsh & a few plugins
 curl | curl
+wget | wget
 jq | jq
 tmux | tmux
 stow | stow
