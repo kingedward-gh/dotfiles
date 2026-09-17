@@ -2,10 +2,10 @@
 
 # ==============================================================================
 # Snapshot: explicitly installed pacman/paru packages (not dependencies)
-# Output: my-packages/installed-arch-packages.txt
+# Output: my-dump/arch-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-packages/installed-arch-packages.txt"
+OUT="$HOME/Code/dotfiles/my-dump/arch-dump.txt"
 
 if [ ! -f /etc/arch-release ]; then
     echo "⚠️  This script is for Arch Linux only."

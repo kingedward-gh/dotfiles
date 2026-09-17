@@ -18,7 +18,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [ -f /etc/arch-release ]; then
     OS="arch"
 elif [ -f /etc/os-release ] && grep -qi '^ID=ubuntu' /etc/os-release; then
-    echo "⚠️  [COMMON] is for macOS and Arch only. Use install-ubuntu-packages.sh"
+    echo "⚠️  [COMMON] is for macOS and Arch only. Use install-ubuntu.sh"
     exit 0
 fi
 

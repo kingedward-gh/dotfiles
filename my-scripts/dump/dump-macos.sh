@@ -2,10 +2,10 @@
 
 # ==============================================================================
 # Snapshot: requested Homebrew packages (not dependencies)
-# Output: my-packages/installed-macos-packages.txt
+# Output: my-dump/macos-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-packages/installed-macos-packages.txt"
+OUT="$HOME/Code/dotfiles/my-dump/macos-dump.txt"
 
 if [[ "$OSTYPE" != "darwin"* ]]; then
     echo "⚠️  This script is for macOS only."
