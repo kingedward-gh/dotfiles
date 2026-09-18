@@ -73,3 +73,7 @@ statsig-cache.json
 # Edu
 _ignore/
 _global
+
+# Alfred: snippets stay on disk for Alfred, but not in git (passwords, PII)
+alfred/Alfred.alfredpreferences/snippets/
+alfred/Alfred.alfredpreferences/clipboard/

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jyeakley.addb</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>17A8F422-3C07-4E71-92C1-55B0AF660FF0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1E210EC2-F688-42E6-B43A-AC3ED2D6DDE1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Justin Yeakley</string>
+	<key>description</key>
+	<string>Absolut Drinks Database API Integration</string>
+	<key>disabled</key>
+	<true/>
+	<key>name</key>
+	<string>Absolut Drinks Database</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>17A8F422-3C07-4E71-92C1-55B0AF660FF0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>drinks</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Gather Drinks...</string>
+				<key>script</key>
+				<string>require_once('workflows.php');
+$wf = new Workflows();
+
+$orig = "{query}";
+$query = str_replace(' ', '%20', $orig);
+$xml = $wf-&gt;request( "http://addb.absolutdrinks.com/quickSearch/drinks/".$query."?apiKey=10ff4b5cde694b86ad47fc7a7720022b");
+$xml = json_decode($xml,true);
+$int = 1;
+
+foreach ($xml['result'] as $item) 
+{
+	$tastes = "";
+	$numTastes = count($tasteraw);
+	$i = 0;
+	foreach ($item['tastes'] as $tasteraw) 
+	{
+		$tastes = $tastes.$tasteraw['text'];
+		if(++$i &lt; $numTastes) {
+			$tastes = $tastes.", ";
+		}
+	}
+	$mixers = "";
+	foreach ($item['ingredients'] as $ingred) 
+	{
+		$mixers = $mixers.$ingred['textPlain']."\n";
+	}
+	$hot = "Yes";
+	if($item['isHot'] == false){
+		$hot = "No";
+	}
+	$details = $item['name']." (".$tastes.")\n\n".$mixers."\nServer In: ".$item['servedIn']['text']."\nInstructions: ".$item['descriptionPlain']."\nServed Hot: ".$hot;
+	$wf-&gt;result( 'addb', "$details", $item['name'], $item['descriptionPlain'], 'icon.png' );
+};
+
+$results = $wf-&gt;results();
+if ( count( $results ) == 0 ):
+	$wf-&gt;result( 'addb', "$orig", 'No Suggestions', 'No Drinks found.', 'icon.png' );
+endif;
+
+echo $wf-&gt;toxml();</string>
+				<key>subtext</key>
+				<string>Gather Drinks from ADDB</string>
+				<key>title</key>
+				<string>Gather Drinks from ADDB</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>1E210EC2-F688-42E6-B43A-AC3ED2D6DDE1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Credit addb
+https://addb.absolutdrinks.com/</string>
+	<key>uidata</key>
+	<dict>
+		<key>17A8F422-3C07-4E71-92C1-55B0AF660FF0</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>1E210EC2-F688-42E6-B43A-AC3ED2D6DDE1</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>0C0CCC85-349C-4366-8F38-370ECA54CEA3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C4F29048-D1EC-420C-A6C5-96E9322C35FD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>17871155-B18E-4AAC-AB0B-0DFC50C9D438</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>77C64459-B239-4895-B567-02BDD2D166A4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6BF84C9D-E72C-445E-8B5A-67A8BCAAA2D5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0C0CCC85-349C-4366-8F38-370ECA54CEA3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>794966EB-06A4-4E0C-B225-D8FAED9A2D17</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FA5404C9-B8F4-4F3E-BBA1-99625755719C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Eduardo Grillo</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<true/>
+	<key>name</key>
+	<string>Urban Terror</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Library/PreferencePanes/UniversalAccessPref.prefPane</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>C4F29048-D1EC-420C-A6C5-96E9322C35FD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>ObjC.import('stdlib');
+
+let keep_alive_array = $.getenv('edu_alive').split(',').map(app =&gt; app.trim())
+if ($.getenv('kill_finder') !== 'true') keep_alive_array.push('Finder')
+
+const running_apps = Application('System Events').applicationProcesses.where({ backgroundOnly: false }).name().filter(app =&gt; !keep_alive_array.includes(app))
+
+running_apps.forEach(app =&gt; Application(app).quit())
+
+
+
+
+let edu_dead_array = $.getenv('edu_dead').split(',').map(app =&gt; app.trim())
+
+const app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+const quotedForm = (input) =&gt; "'" + input.toString().replace(/'/g, "'\\''") + "'"
+
+const running_processes = Application('System Events').applicationProcesses.name().filter(processName =&gt; edu_dead_array.includes(processName))
+
+running_processes.forEach(processName =&gt; {
+  try {
+    app.doShellScript('killall ' + quotedForm(processName))
+  } catch(error) {
+    console.log('Skipping ' + processName)
+  }
+})</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0C0CCC85-349C-4366-8F38-370ECA54CEA3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>urt11</string>
+				<key>subtext</key>
+				<string>Prepare for Urban Terror</string>
+				<key>text</key>
+				<string>UrT 1 (before play)</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6BF84C9D-E72C-445E-8B5A-67A8BCAAA2D5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>~/Applications/Urban Terror/Quake3-UrT.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>77C64459-B239-4895-B567-02BDD2D166A4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>urt2</string>
+				<key>subtext</key>
+				<string>Play Urban Terror</string>
+				<key>text</key>
+				<string>UrT 2 (play)</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>17871155-B18E-4AAC-AB0B-0DFC50C9D438</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/Flux.app</string>
+					<string>/Applications/Tomighty.app</string>
+					<string>/Applications/Dropbox.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>FA5404C9-B8F4-4F3E-BBA1-99625755719C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>urt3</string>
+				<key>subtext</key>
+				<string>Reset everything after Urban Terror</string>
+				<key>text</key>
+				<string>UrT 3 (after play)</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>794966EB-06A4-4E0C-B225-D8FAED9A2D17</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>0C0CCC85-349C-4366-8F38-370ECA54CEA3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>245</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>17871155-B18E-4AAC-AB0B-0DFC50C9D438</key>
+		<dict>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>6BF84C9D-E72C-445E-8B5A-67A8BCAAA2D5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>77C64459-B239-4895-B567-02BDD2D166A4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>245</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>794966EB-06A4-4E0C-B225-D8FAED9A2D17</key>
+		<dict>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+		<key>C4F29048-D1EC-420C-A6C5-96E9322C35FD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>450</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>FA5404C9-B8F4-4F3E-BBA1-99625755719C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>245</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>edu_alive</key>
+		<string>Discord</string>
+		<key>edu_dead</key>
+		<string>Flux, Tomighty, Dropbox</string>
+		<key>keep_alive</key>
+		<string></string>
+		<key>kill_finder</key>
+		<string>false</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>edu_dead</string>
+		<string>keep_alive</string>
+		<string>edu_alive</string>
+	</array>
+	<key>version</key>
+	<string></string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

@@ -34,12 +34,34 @@ mvm() {
   mkdir -p "${@:-1}" && mv "$@"
 }
 
+# extract archives: ex archive.tar.gz
+ex() {
+  if [[ ! -f $1 ]]; then
+    echo "'$1' is not a valid file" >&2
+    return 1
+  fi
+  case $1 in
+    *.tar.bz2|*.tbz2) tar xjf "$1" ;;
+    *.tar.gz|*.tgz)   tar xzf "$1" ;;
+    *.tar.xz)         tar xf "$1"  ;;
+    *.tar.zst)        tar --zstd -xf "$1" ;;
+    *.tar)            tar xf "$1"  ;;
+    *.bz2)            bunzip2 "$1" ;;
+    *.gz)             gunzip "$1"  ;;
+    *.zip)            unzip "$1"   ;;
+    *.rar)            unrar x "$1" ;;
+    *.7z)             7z x "$1"    ;;
+    *.Z)              uncompress "$1" ;;
+    *) echo "'$1' cannot be extracted via ex()" >&2; return 1 ;;
+  esac
+}
+
 # misc
 alias x='exit'
 
 # cd
 alias home='cd ~'
-alias -- -='cd -'
+# alias -- -='cd -' # already in omz
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -178,6 +200,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # Copy your public SSH key to the clipboard to paste on GitHub/Bitbucket
   alias pubkey="([ -f ~/.ssh/id_ed25519.pub ] && pbcopy < ~/.ssh/id_ed25519.pub) || pbcopy < ~/.ssh/id_rsa.pub"
+
+  # cd this shell to the front Finder window (selected folder, else current folder)
+  cdf() {
+    local finder_path
+    finder_path="$(finder-iterm --path)" || return
+    cd -- "$finder_path"
+  }
 
   # iTerm2 VPS dashboard (5 panes):
   #
