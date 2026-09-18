@@ -1,13 +1,15 @@
 theme = "catppuccin-latte"
-visualizer = "Geyser"
+visualizer = "ClassicLED"
 show_metadata = false
 eq_preset = "Flat"
 eq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 shuffle = true
 speed = 1.00
 
+audio_device = 20-64-DE-84-62-BC:output
 [radio]
 country = "none"
 
 [ytmusic]
+enabled      = true
 cookies_from = "chrome"

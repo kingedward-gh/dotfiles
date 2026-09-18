@@ -4,10 +4,10 @@ path = "https://ice5.somafm.com/metal-128-aac"
 title = "SomaFM Metal Detector (128k AAC) [128k] · United States Of America"
 genre = "black metal,doom metal,post-punk,progressive rock,sludge,stoner rock,trash"
 realtime = true
-provider_meta.radio.bitrate = "128"
-provider_meta.radio.state = "California"
 provider_meta.radio.country = "The United States Of America"
 provider_meta.radio.codec = "AAC"
+provider_meta.radio.bitrate = "128"
+provider_meta.radio.state = "California"
 
 [[entry]]
 favorited_at = "2026-09-13T15:27:03Z"
@@ -15,7 +15,7 @@ path = "https://icecast-rian.cdnvideo.ru/voicerus"
 title = "Сп�^c�^bник [128k] · Russian Federation"
 genre = "news,talk"
 realtime = true
+provider_meta.radio.state = "�^|о�^aква"
 provider_meta.radio.country = "The Russian Federation"
 provider_meta.radio.codec = "MP3"
 provider_meta.radio.bitrate = "128"
-provider_meta.radio.state = "�^|о�^aква"

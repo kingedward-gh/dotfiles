@@ -74,6 +74,12 @@ statsig-cache.json
 _ignore/
 _global
 
+# cliamp runtime (config dir is folded into the repo)
+cliamp/.config/cliamp/*.log
+cliamp/.config/cliamp/*.lock
+cliamp/.config/cliamp/history.toml
+cliamp/.config/cliamp/radio_favorites.toml
+
 # Alfred: snippets stay on disk for Alfred, but not in git (passwords, PII)
 alfred/Alfred.alfredpreferences/snippets/
 alfred/Alfred.alfredpreferences/clipboard/
