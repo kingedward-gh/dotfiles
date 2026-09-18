@@ -1,9 +1,9 @@
-theme = "catppuccin"
-visualizer = "Butterfly"
+theme = "catppuccin-latte"
+visualizer = "Geyser"
 show_metadata = false
-eq_preset = "Custom"
+eq_preset = "Flat"
 eq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-shuffle = false
+shuffle = true
 speed = 1.00
 
 [radio]

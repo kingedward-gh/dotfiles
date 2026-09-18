@@ -66,6 +66,7 @@ mole
 rectangle
 handy
 mactop
+tlrc
 
 ## dev
 imagesnap
