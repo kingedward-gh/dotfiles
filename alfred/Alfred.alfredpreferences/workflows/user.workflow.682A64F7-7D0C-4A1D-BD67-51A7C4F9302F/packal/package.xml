@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Smart Folders</name>
+  <version>1.0</version>
+  <bundle>net.deanishe.alfred-smartfolders</bundle>
+  <updated>1391357917</updated>
+  <file>smart_folders.alfredworkflow</file>
+</workflow>

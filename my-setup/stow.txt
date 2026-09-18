@@ -17,6 +17,7 @@ starlink-tracker
 
 [MACOS]
 iterm2
+# alfred # do not stow, change preferences folder from Alfred app
 cursor-macos
 
 [ARCH]

@@ -1,0 +1,74 @@
+#!/bin/bash
+# Open the current Finder folder in a new iTerm2 window.
+# Usage:
+#   finder-iterm         open iTerm2 at that folder
+#   finder-iterm --path  print the folder (for cdf)
+#
+# Alfred (Powerpack): Workflows → + → Blank Workflow → "Finder → iTerm"
+#   1. Hotkey (e.g. ⌥⌘↩) → connect to Run Script
+#   2. Language: /bin/bash   Script: "$HOME/.local/bin/finder-iterm"
+#   3. Optional: Keyword `iterm` (Argument: None) → same Run Script
+# Finder does not need to be focused; the front Finder window is used.
+
+set -euo pipefail
+
+finder_cwd() {
+  osascript <<'EOF'
+tell application "Finder"
+  if (count of selection) is 1 then
+    set theItem to item 1 of selection
+    try
+      if class of theItem is in {folder, disk} then
+        return POSIX path of (theItem as alias)
+      else
+        return POSIX path of (container of theItem as alias)
+      end if
+    end try
+  end if
+  try
+    return POSIX path of (insertion location as alias)
+  end try
+  try
+    if (count of windows) > 0 then
+      return POSIX path of (target of front window as alias)
+    end if
+  end try
+  return POSIX path of (path to home folder)
+end tell
+EOF
+}
+
+if [[ "${1:-}" == --path ]]; then
+  finder_cwd
+  exit 0
+fi
+
+finder_path="$(finder_cwd)"
+
+osascript - "$finder_path" <<'EOF'
+on run argv
+  set finderPath to item 1 of argv
+
+  tell application "System Events"
+    set itermWasRunning to (exists process "iTerm2")
+  end tell
+
+  tell application "iTerm"
+    activate
+    if itermWasRunning then
+      set newWindow to (create window with default profile)
+    else
+      delay 0.25
+      try
+        set newWindow to current window
+      on error
+        set newWindow to (create window with default profile)
+      end try
+    end if
+    tell current session of newWindow
+      -- leading space: HIST_IGNORE_SPACE so this cd does not pollute history
+      write text " cd " & quoted form of finderPath
+    end tell
+  end tell
+end run
+EOF
