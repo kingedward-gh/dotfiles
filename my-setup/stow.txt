@@ -20,7 +20,6 @@ starlink-tracker
 iterm2
 # alfred # do not stow, change preferences folder from Alfred app
 cursor-macos
-sketchybar
 
 [ARCH]
 foot

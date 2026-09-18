@@ -5,6 +5,7 @@
 # zsh
 alias ref='source ~/.zshrc'
 alias zshrc='nano ~/.zshrc'
+alias zshrc-aliases='nano ~/Code/dotfiles/zsh/.config/zsh/aliases.zsh'
 
 # ls / ll (legacy)
 # macOS (BSD: -G = color): alias ll='ls -lahFG'
@@ -65,8 +66,9 @@ alias home='cd ~'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias ioartista='cd ~/Code/ioartista_it'
 alias dotfiles='cd ~/Code/dotfiles'
+alias grillone='cd ~/Code/grillone_it'
+alias ioartista='cd ~/Code/ioartista_it'
 
 # git
 alias g='git'
