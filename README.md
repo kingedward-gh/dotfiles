@@ -11,9 +11,16 @@ Top-level folders are [GNU Stow](https://www.gnu.org/software/stow/) packages: e
 ```
 dotfiles/
 ├── zsh/              # zsh config —> Common
+├── git/              # gitconfig + global ignore —> Common
+├── cliamp/           # cliamp config —> Common (folded)
+├── yazi/             # yazi config —> Common
+├── bat/              # bat config —> Common
+├── btop/             # btop config —> Common
+├── fastfetch/        # fastfetch config —> Common
 ├── cursor/           # Cursor config —> Arch
 ├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
 ├── iterm2/           # iTerm2 config —> macOS
+├── alfred/           # Alfred prefs (not stowed — set folder in the app)
 ├── rectangle/        # Rectangle config —> macOS
 ├── foot/             # Foot terminal config —> Arch
 ├── starlink-tracker/ # starlink script —> Common (stow wrapper, do not edit)
@@ -112,6 +119,23 @@ Packages are stowed in order:
 2. OS-specific sections (`[MACOS]` or `[ARCH]`)
 
 To add a new config folder, create it in the repo and add its name to `stow.txt` in the right section.
+
+---
+
+
+
+## Git ignore
+
+The `git` package stows `~/.gitconfig` and `~/.config/git/ignore`. `core.excludesFile` points at that ignore file, so it applies to **every repo on this machine**.
+
+**Global** (`git/.config/git/ignore`) — OS junk, editor files, backup leftovers, personal scratch (`_ignore/`, `_global`), and a `.env` safety net.
+
+**Per-repo `.gitignore`** — project rules that collaborators need too:
+
+- this repo: cliamp runtime files, Alfred snippets/clipboard
+- Rails apps: `/.bundle`, `/.env*`, `/log`, `/tmp`, storage, Kamal secrets, asset builds
+
+Do not symlink one `.gitignore` into every repo. After `stow-all.sh` on a new machine, the global ignore is live.
 
 ---
 
