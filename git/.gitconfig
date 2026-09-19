@@ -3,6 +3,7 @@
 	email = 304043171+kingedward-gh@users.noreply.github.com
 [core]
 	editor = ~/.local/bin/git-editor
+	excludesFile = ~/.config/git/ignore
 	hooksPath = ~/.config/git/hooks
 [alias]
 	aliases = config --get-regexp '^alias\\.'
