@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "plugins": {
+    "block-burst": "08afcd95abd2cde3eb385a29ead18b6e9e52d1a4e891be99703371a6fcecc71a",
+    "mandelbrot": "32e82f3c9e57bf12a1af924a96cb91ce681e921f05f8e2bef5c566df382b575a",
+    "nightrider": "72a0c69bc6bde4e3ffd185d5ff4e9c2b7c6de68cfbaef7b5f5e23b4215fbe053",
+    "nova": "747c4e1b03cefd01ee058e625c1d2fe191f62407fbb92b6ea3f260c8ce036c33",
+    "reverb": "18c459c146b705b4933c09dc2fddecb432251b15f7cbd60831d379282898dc86",
+    "tubeamp": "42110c2e0b0e03bf27e436f1e49d34eb99f925fa4bd38ef3f3ba470e7dc8f2ed",
+    "vu-meter": "65358e0de3bb44806e693f357b705b6924dd5d2b861580f6d71ab8cff4dec909"
+  }
+}
