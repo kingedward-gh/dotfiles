@@ -1,0 +1,38 @@
+# Per-user ignore — applies to every repo on this machine.
+# Stow: git/.config/git/ignore → ~/.config/git/ignore
+# Project-specific rules stay in each repo's .gitignore.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# Editors
+*.swp
+*.swo
+.idea/
+.cursor
+.vscode
+*.code-workspace
+statsig-cache.json
+
+# Backup leftovers
+*.bak
+*.tmp
+*.orig
+
+# Secrets safety net (Rails still keeps /.env* in the project gitignore)
+.env
+.env.*
+!.env.example
+
+# edu's ignores below ------------------------------------------------------------
+
+# Personal scratch (never commit)
+_ignore/
+_global
