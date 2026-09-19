@@ -11,11 +11,13 @@ alias zshrc-aliases='nano ~/Code/dotfiles/zsh/.config/zsh/aliases.zsh'
 # macOS (BSD: -G = color): alias ll='ls -lahFG'
 # Arch  (GNU: --color):    alias ll='ls -lahF --color=auto'
 
+# ls (with eza)
 if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --group-directories-first --color=auto'
-  alias ll='eza -la --group-directories-first --color=auto --icons=auto'
+  alias ls='eza -lh --group-directories-first --color=auto --icons=auto'
   alias la='eza -lah --group-directories-first --color=auto --icons=auto --git'
-  alias tree='eza --tree --icons -a --ignore-glob=".git"'
+  alias ll='ls'
+  alias tree='eza  --level 2 --tree  --group-directories-first --color=auto --icons=auto --ignore-glob=".git"'
+  alias treea='eza -a --level 2 --tree  --group-directories-first --color=auto --icons=auto --ignore-glob=".git"'
 fi
 
 if command -v bat >/dev/null 2>&1; then

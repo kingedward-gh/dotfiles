@@ -22,10 +22,13 @@ fzf | fzf
 bat | bat
 yazi | yazi
 ripgrep | ripgrep
-font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
 localsend | localsend-bin
 # asciinema | asciinema
 thefuck | thefuck
+
+## fonts
+font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
+font-monaspace-nerd-font | font-monaspace-nerd-font
 
 ## editors
 nano | nano
