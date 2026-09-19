@@ -1,4 +1,4 @@
-# Snapshot 2026-09-13 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-19 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
@@ -24,19 +24,25 @@ jq
 kew
 lazydocker
 lazygit
+lua
 mactop
 mole
 nano
 neovim
+nowplaying-cli
 pipes-sh
 pipx
 postgresql@18
 rbenv
 ripgrep
 stow
+switchaudio-osx
 tailspin
+thefuck
+tlrc
 tmux
 vips
+wget
 yazi
 zoxide
 zsh
@@ -44,8 +50,11 @@ zsh
 [CASKS]
 brave-browser
 font-jetbrains-mono-nerd-font
+font-sf-mono
+font-sf-pro
 handy
 iterm2
 librewolf
 localsend
 rectangle
+sf-symbols
