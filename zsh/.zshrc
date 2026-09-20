@@ -2,16 +2,16 @@
 # [COMMON]
 # ==============================================================================
 
+# Cursor/VS Code shell integration sets ZDOTDIR to a temp dir, so don't use it for our files.
+ZSH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+
+
 ### oh my zsh
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="fino"
-# ZSH_THEME="bira"
-# ZSH_THEME="ys"
-# ZSH_THEME="bureau"
+ZSH_THEME="robbyrussell" # chosen options: robbyrussell, agnoster, fino, bira, ys, bureau
 
+# VSCode to cursor
 VSCODE=cursor
 
 # Move the completion dump file to the .cache folder
@@ -37,7 +37,7 @@ plugins=(
   # macos
   # postgres
   # rails
-  rbenv
+  # rbenv
   # ruby
   # rvm
   thefuck
@@ -75,6 +75,10 @@ setopt HIST_IGNORE_DUPS        # skip consecutive duplicates
 setopt HIST_IGNORE_SPACE       # skip commands that start with a space
 setopt HIST_VERIFY             # expand history before running
 setopt SHARE_HISTORY           # share history across sessions
+
+
+### glob
+
 setopt NUMERIC_GLOB_SORT       # file10 after file9, not after file1
 
 
@@ -90,9 +94,6 @@ eval "$(zoxide init zsh)"
 
 
 ### fzf
-
-# Cursor/VS Code shell integration sets ZDOTDIR to a temp dir, so don't use it for our files.
-ZSH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
@@ -112,12 +113,8 @@ fi
 
 ### extras
 
+# disable mailcheck
 unset MAILCHECK
 
-
-### zmv (batch rename/copy/link with patterns)
-
+# zmv (batch rename/copy/link with patterns)
 autoload -Uz zmv
-# alias zmv='zmv'
-alias zcp='zmv -C'
-alias zln='zmv -L'
