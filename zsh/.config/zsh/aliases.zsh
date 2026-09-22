@@ -182,6 +182,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Copy your public SSH key to the clipboard to paste on GitHub/Bitbucket
   alias pubkey="([ -f ~/.ssh/id_ed25519.pub ] && pbcopy < ~/.ssh/id_ed25519.pub) || pbcopy < ~/.ssh/id_rsa.pub"
 
+  # Now Playing (MediaRemote). `np` prints the current track; `np play` / `np pause` pass through.
+  if command -v nowplaying-cli >/dev/null 2>&1; then
+    np() {
+      if [[ $# -eq 0 ]]; then
+        nowplaying-cli get --json artist album title
+      else
+        nowplaying-cli "$@"
+      fi
+    }
+  fi
+
   # cd this shell to the front Finder window (selected folder, else current folder)
   cdf() {
     local finder_path

@@ -15,7 +15,8 @@ nano
 fastfetch
 bat
 btop
-cliamp # fold ~/.config/cliamp — app replaces file-level stow symlinks on save
+# fold ~/.config/cliamp — app replaces file-level stow symlinks on save
+cliamp
 yazi
 starlink-tracker
 

@@ -29,7 +29,7 @@ tlrc | tlrc-bin
 
 ## fonts
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
-font-monaspace-nerd-font | font-monaspace-nerd-font
+font-monaspice-nerd-font | font-monaspice-nerd-font
 
 ## editors
 nano | nano
@@ -38,6 +38,8 @@ neovim | neovim
 
 ## apps
 # google-chrome | google-chrome
+# librewolf ?
+# brave-browser ?
 
 ## monitoring
 fastfetch | fastfetch
@@ -59,7 +61,7 @@ vips | libvips
 postgresql@18 | postgresql
 
 ## music
-cliamp | cliamp
+bjarneo/cliamp/cliamp | cliamp
 kew | kew
 
 ## video
@@ -78,6 +80,7 @@ rectangle
 handy
 mactop
 mole
+nowplaying-cli
 
 ## dev
 imagesnap
