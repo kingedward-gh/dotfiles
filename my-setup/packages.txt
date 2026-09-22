@@ -8,23 +8,24 @@
 # ==============================================================================
 
 [COMMON]
+
 ## shell
-zsh | zsh # with oh-my-zsh & a few plugins
+zsh | zsh
 curl | curl
 wget | wget
 jq | jq
-tmux | tmux
-stow | stow
+ripgrep | ripgrep
 eza | eza
 zoxide | zoxide
 fd | fd
 fzf | fzf
 bat | bat
 yazi | yazi
-ripgrep | ripgrep
+tmux | tmux
+stow | stow
 localsend | localsend-bin
-# asciinema | asciinema
 thefuck | thefuck
+tlrc | tlrc-bin
 
 ## fonts
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
@@ -57,25 +58,34 @@ graphviz | graphviz
 vips | libvips
 postgresql@18 | postgresql
 
+## music
+cliamp | cliamp
+kew | kew
+
+## video
+# asciinema | asciinema
+
 ## fun
 cmatrix | cmatrix
 pipes-sh | pipes.sh
 cbonsai | cbonsai
-kew | kew
+
 
 [MACOS]
+
 iterm2
-mole
 rectangle
 handy
 mactop
-tlrc
+mole
 
 ## dev
 imagesnap
 stripe/stripe-cli/stripe
 
+
 [ARCH]
+
 omarchy
 hyprland
 quickshell
@@ -83,7 +93,9 @@ foot
 google-chrome
 cursor-bin
 
+
 [UBUNTU]
+
 tmux
 fastfetch
 btop

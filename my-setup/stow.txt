@@ -8,17 +8,22 @@
 [COMMON]
 zsh
 git
+gh
+lazygit
+lazydocker
+nano
 fastfetch
 bat
 btop
-# fold ~/.config/cliamp — app replaces file-level stow symlinks on save
-cliamp
+cliamp # fold ~/.config/cliamp — app replaces file-level stow symlinks on save
 yazi
 starlink-tracker
 
 [MACOS]
-iterm2
 # alfred # do not stow, change preferences folder from Alfred app
+# rectangle # do not stow
+iterm2
+mactop
 cursor-macos
 
 [ARCH]

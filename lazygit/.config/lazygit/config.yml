@@ -1,0 +1,39 @@
+# ==============================================================================
+# [COMMON]
+# Catppuccin Latte, blue accent — same blue as yazi (#1e66f5).
+# Dates match the git log alias: 2006-01-02 15:04.
+# ==============================================================================
+
+gui:
+  nerdFontsVersion: "3"
+  showIcons: true
+  timeFormat: "2006-01-02"
+  shortTimeFormat: "15:04"
+  theme:
+    activeBorderColor:
+      - "#1e66f5"
+      - bold
+    inactiveBorderColor:
+      - "#6c6f85"
+    searchingActiveBorderColor:
+      - "#df8e1d"
+    optionsTextColor:
+      - "#1e66f5"
+    selectedLineBgColor:
+      - "#ccd0da"
+    inactiveViewSelectedLineBgColor:
+      - "#9ca0b0"
+    cherryPickedCommitFgColor:
+      - "#1e66f5"
+    cherryPickedCommitBgColor:
+      - "#bcc0cc"
+    markedBaseCommitFgColor:
+      - "#1e66f5"
+    markedBaseCommitBgColor:
+      - "#df8e1d"
+    unstagedChangesColor:
+      - "#d20f39"
+    defaultFgColor:
+      - "#4c4f69"
+  authorColors:
+    "*": "#7287fd"

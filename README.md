@@ -12,6 +12,10 @@ Top-level folders are [GNU Stow](https://www.gnu.org/software/stow/) packages: e
 dotfiles/
 ├── zsh/              # zsh config —> Common
 ├── git/              # gitconfig + global ignore —> Common
+├── gh/               # gh config.yml —> Common (hosts.yml stays local)
+├── lazygit/          # lazygit config —> Common
+├── lazydocker/       # lazydocker config —> Common
+├── nano/             # nanorc —> Common
 ├── cliamp/           # cliamp config —> Common (folded)
 ├── yazi/             # yazi config —> Common
 ├── bat/              # bat config —> Common
@@ -20,6 +24,7 @@ dotfiles/
 ├── cursor/           # Cursor config —> Arch
 ├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
 ├── iterm2/           # iTerm2 config —> macOS
+├── mactop/           # mactop config —> macOS
 ├── alfred/           # Alfred prefs (not stowed — set folder in the app)
 ├── rectangle/        # Rectangle config —> macOS
 ├── foot/             # Foot terminal config —> Arch

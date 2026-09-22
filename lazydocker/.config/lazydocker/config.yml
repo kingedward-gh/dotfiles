@@ -1,0 +1,19 @@
+# ==============================================================================
+# [COMMON]
+# Lazydocker only accepts named colors. In a Catppuccin Latte terminal
+# those names are already the latte palette. Blue is the yazi accent.
+# openCommand stays unset so macOS uses `open` and Linux uses its default.
+# ==============================================================================
+
+gui:
+  border: rounded
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - default
+    selectedLineBgColor:
+      - blue
+    optionsTextColor:
+      - blue

@@ -30,5 +30,6 @@
     "workbench.iconTheme": "catppuccin-latte",
     "cursor.cpp.disabledLanguages": [
         "markdown"
-    ]
+    ],
+    "git.openRepositoryInParentFolders": "never"
 }

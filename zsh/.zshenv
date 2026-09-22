@@ -5,7 +5,6 @@
 # Sourced for every zsh: interactive, scripts, Cursor. Keep this file fast.
 # Do not set ZDOTDIR: Cursor/VS Code expect ~/.zshrc under $HOME.
 
-
 ### XDG
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"

@@ -1,0 +1,30 @@
+# ==============================================================================
+# [COMMON]
+# Syntax colors come from the system nanorc. Homebrew already includes
+# /opt/homebrew/share/nano/*.nanorc; Arch and Ubuntu include
+# /usr/share/nano/*.nanorc from /etc/nanorc.
+# ==============================================================================
+
+set linenumbers
+set autoindent
+set tabsize 2
+set tabstospaces
+set softwrap
+set atblanks
+set constantshow
+set indicator
+set positionlog
+set smarthome
+set zap
+set colonparsing
+
+# Named colors follow the terminal palette (Catppuccin Latte in iTerm).
+# Nano 9 rejects #RRGGBB here.
+set titlecolor bold,white,blue
+set statuscolor bold,black,white
+set promptcolor black,white
+set numbercolor blue
+set keycolor blue
+set functioncolor cyan
+set selectedcolor white,blue
+set errorcolor bold,white,red
