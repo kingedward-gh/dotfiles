@@ -1,0 +1,5 @@
+# f     filter the current directory
+# z     jump to a file or directory with fzf
+# Z     jump to a directory with zoxide (init.lua updates its database on cd)
+# s     search file names with fd
+# S     search file contents with ripgrep
