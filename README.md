@@ -131,16 +131,12 @@ To add a new config folder, create it in the repo and add its name to `stow.txt`
 
 ## Git ignore
 
-The `git` package stows `~/.gitconfig` and `~/.config/git/ignore`. `core.excludesFile` points at that ignore file, so it applies to **every repo on this machine**.
+The `git` package stows `~/.gitconfig` and Git hooks. Ignore rules are managed in each repository's `.gitignore`; there is no shared global ignore file or `core.excludesFile` setting.
 
-**Global** (`git/.config/git/ignore`) — OS junk, editor files, backup leftovers, personal scratch (`_ignore/`, `_global`), and a `.env` safety net.
+Each repository's `.gitignore` starts with OS, editor, backup, personal scratch (`_ignore/`, `_global`), and environment-file rules. Repository-specific rules follow, so their exceptions and overrides take precedence.
 
-**Per-repo `.gitignore`** — project rules that collaborators need too:
+When creating a new repository, copy the shared rules into its `.gitignore`. Changes to those rules must be applied separately to each repository.
 
-- this repo: cliamp runtime files, Alfred snippets/clipboard
-- Rails apps: `/.bundle`, `/.env*`, `/log`, `/tmp`, storage, Kamal secrets, asset builds
-
-Do not symlink one `.gitignore` into every repo. After `stow-all.sh` on a new machine, the global ignore is live.
 
 ---
 

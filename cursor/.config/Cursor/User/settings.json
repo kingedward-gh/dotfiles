@@ -31,5 +31,7 @@
     "cursor.cpp.disabledLanguages": [
         "markdown"
     ],
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "cursor.composer.queueManualSendBehavior2": "steer",
+    "cursor.composer.queueMessageDefaultBehavior": "steer"
 }

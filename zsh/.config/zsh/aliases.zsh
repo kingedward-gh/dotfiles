@@ -20,8 +20,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias dotfiles='cd ~/Code/dotfiles'
-alias grillone='cd ~/Code/grillone_it'
 alias ioartista='cd ~/Code/ioartista_it'
+alias grillone='cd ~/Code/grillone_it'
+alias grillone-ghl='cd ~/Code/grillone_it-ghl'
 
 # ls
 if command -v eza >/dev/null 2>&1; then
