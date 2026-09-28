@@ -22,38 +22,73 @@ fi
 # tailspin's binary is named tspin.
 standalone_cmd() {
     case "$1" in
+        bandwhich) echo "bandwhich" ;;
         lazydocker) echo "lazydocker" ;;
         tailspin) echo "tspin" ;;
         *) echo "" ;;
     esac
 }
 
-install_lazydocker() {
-    echo "📦 Installing lazydocker..."
-    curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-    if [ -f "$HOME/.local/bin/lazydocker" ]; then
-        sudo mv "$HOME/.local/bin/lazydocker" /usr/local/bin/lazydocker
-    fi
-}
-
-install_tailspin() {
-    local tmp arch
-    echo "📦 Installing tspin..."
+# Run each binary install in a subshell so cleanup cannot hide its exit status.
+install_binary() (
+    local pkg="$1" cmd arch project release tag asset tmp
+    cmd=$(standalone_cmd "$pkg")
     case "$(uname -m)" in
-        x86_64) arch="x86_64-unknown-linux-musl" ;;
-        aarch64|arm64) arch="aarch64-unknown-linux-musl" ;;
-        *)
-            echo "❌ Unsupported architecture for tailspin: $(uname -m)"
-            return 1
+        x86_64) arch=x86_64 ;;
+        aarch64|arm64) arch=aarch64 ;;
+        *) echo "❌ $pkg: unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+    esac
+    case "$pkg" in
+        bandwhich) project=imsnif/bandwhich ;;
+        lazydocker) project=jesseduffield/lazydocker ;;
+        tailspin) project=bensadeh/tailspin ;;
+        *) echo "❌ Unknown standalone package: $pkg" >&2; exit 1 ;;
+    esac
+    echo "📦 Installing $pkg..."
+    tmp=$(mktemp -d) || { echo "❌ $pkg: cannot create temporary directory." >&2; exit 1; }
+    trap 'rm -rf -- "$tmp"' EXIT
+    trap 'exit 130' INT
+    trap 'exit 143' TERM
+
+    # Resolve once: versioned asset names must match the chosen release.
+    release=$(curl -fsSL -o /dev/null -w '%{url_effective}' "https://github.com/$project/releases/latest") || {
+        echo "❌ $pkg: cannot resolve latest release." >&2; exit 1;
+    }
+    case "$release" in
+        "https://github.com/$project/releases/tag/"*) tag=${release##*/} ;;
+        *) echo "❌ $pkg: unexpected release URL: $release" >&2; exit 1 ;;
+    esac
+    if [[ ! "$tag" =~ ^[vV]?[0-9][a-zA-Z0-9._-]*$ ]]; then
+        echo "❌ $pkg: invalid release tag: $tag" >&2; exit 1
+    fi
+    case "$pkg" in
+        bandwhich) asset="bandwhich-${tag}-${arch}-unknown-linux-musl.tar.gz" ;;
+        tailspin) asset="tailspin-${arch}-unknown-linux-musl.tar.gz" ;;
+        lazydocker)
+            [ "$arch" != aarch64 ] || arch=arm64
+            asset="lazydocker_${tag#v}_Linux_${arch}.tar.gz"
             ;;
     esac
-    tmp=$(mktemp -d)
-    if curl -fsSL "https://github.com/bensadeh/tailspin/releases/latest/download/tailspin-${arch}.tar.gz" | tar -xz -C "$tmp"; then
-        sudo mv "$tmp/tspin" /usr/local/bin/tspin
-        sudo chmod +x /usr/local/bin/tspin
+    curl -fsSL "https://github.com/$project/releases/download/$tag/$asset" -o "$tmp/archive.tar.gz" || {
+        echo "❌ $pkg: download failed." >&2; exit 1;
+    }
+    tar -xzf "$tmp/archive.tar.gz" -C "$tmp" || {
+        echo "❌ $pkg: extraction failed." >&2; exit 1;
+    }
+    if [ ! -f "$tmp/$cmd" ] || [ -L "$tmp/$cmd" ]; then
+        echo "❌ $pkg: archive does not contain the expected binary $cmd." >&2; exit 1
     fi
-    rm -rf "$tmp"
-}
+    chmod +x "$tmp/$cmd" && "$tmp/$cmd" --version >/dev/null || {
+        echo "❌ $pkg: downloaded binary cannot run." >&2; exit 1;
+    }
+    sudo install -m 0755 "$tmp/$cmd" "/usr/local/bin/$cmd" || {
+        echo "❌ $pkg: installation in /usr/local/bin failed." >&2; exit 1;
+    }
+    "/usr/local/bin/$cmd" --version >/dev/null || {
+        echo "❌ $pkg: installed binary failed verification." >&2; exit 1;
+    }
+    echo "  [✓] $pkg installed"
+)
 
 echo "🔍 Checking [UBUNTU] packages..."
 echo "--------------------------------------------------"
@@ -93,15 +128,23 @@ else
     echo "⚠️  Missing packages: ${MISSING[*]}"
     read -p "Install them now? (y/N): " choice
     if [[ "$choice" =~ ^[yY]$ ]]; then
+        if [ ${#MISSING_BIN[@]} -gt 0 ]; then
+            for tool in curl tar chmod install; do
+                command -v "$tool" >/dev/null 2>&1 || {
+                    echo "❌ Required command missing: $tool" >&2; exit 1;
+                }
+            done
+        fi
         if [ ${#MISSING_APT[@]} -gt 0 ]; then
-            sudo apt update
-            sudo apt install --yes "${MISSING_APT[@]}"
+            sudo apt -o APT::Update::Error-Mode=any update || {
+                echo "❌ APT: package index update failed." >&2; exit 1;
+            }
+            sudo apt install --yes "${MISSING_APT[@]}" || {
+                echo "❌ APT: package installation failed." >&2; exit 1;
+            }
         fi
         for pkg in "${MISSING_BIN[@]}"; do
-            case "$pkg" in
-                lazydocker) install_lazydocker ;;
-                tailspin) install_tailspin ;;
-            esac
+            install_binary "$pkg" || exit $?
         done
     fi
 fi

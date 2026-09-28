@@ -94,6 +94,16 @@ bash my-scripts/install/install-ubuntu.sh   # Ubuntu only (apt)
 
 `packages.txt` uses `brew_name | arch_name` for `[COMMON]` (macOS + Arch). `[MACOS]`, `[ARCH]`, and `[UBUNTU]` hold OS-specific packages. Ubuntu (VPS) installs **only** `[UBUNTU]`, not `[COMMON]`.
 
+The Ubuntu installer handles `bandwhich`, `lazydocker`, and `tailspin` (`tspin`)
+as standalone binaries from their official GitHub releases, for x86_64 and ARM64.
+It verifies each binary with `--version` before and after installing it into
+`/usr/local/bin`. APT, download, extraction, or installation errors stop the
+script with a nonzero exit status; temporary files are cleaned up on exit.
+Existing commands are skipped, not upgraded. Standalone downloads require
+`curl`, `tar`, and the standard `chmod`/`install` commands.
+
+
+
 On macOS and Arch, `install-all.sh` then runs `setup-zsh.sh` to install Oh My Zsh,
 fzf-tab, zsh-autosuggestions, and fast-syntax-highlighting. Git is required for
 downloads. Existing installations are left unchanged; the script does not update

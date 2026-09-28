@@ -10,56 +10,56 @@
 [COMMON]
 
 ## shell
-zsh | zsh
+bat | bat
 curl | curl
-wget | wget
-jq | jq
-ripgrep | ripgrep
 eza | eza
-zoxide | zoxide
 fd | fd
 fzf | fzf
-bat | bat
-yazi | yazi
-tmux | tmux
-stow | stow
+jq | jq
 localsend | localsend-bin
+ripgrep | ripgrep
+stow | stow
 thefuck | thefuck
 tlrc | tlrc-bin
+tmux | tmux
+wget | wget
+yazi | yazi
+zoxide | zoxide
+zsh | zsh
 
 ## fonts
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
 font-monaspice-nerd-font | font-monaspice-nerd-font
 
 ## editors
+# cursor | cursor-bin
 nano | nano
 neovim | neovim
-# cursor | cursor-bin
 
 ## apps
+# brave-browser ?
 # google-chrome | google-chrome
 # librewolf ?
-# brave-browser ?
 
 ## monitoring
+bandwhich | bandwhich
+btop | btop
 fastfetch | fastfetch
 gping | gping
-btop | btop
 tailspin | tailspin
-bandwhich | bandwhich
 
 ## dev
 codex | codex
-gh | github-cli
-lazygit | lazygit
 docker | docker
+gh | github-cli
 lazydocker | lazydocker
+lazygit | lazygit
 
 ## dev (rails)
-rbenv | rbenv
 graphviz | graphviz
-vips | libvips
 postgresql@18 | postgresql
+rbenv | rbenv
+vips | libvips
 
 ## music
 bjarneo/cliamp/cliamp | cliamp
@@ -69,19 +69,19 @@ kew | kew
 # asciinema | asciinema
 
 ## fun
+cbonsai | cbonsai
 cmatrix | cmatrix
 pipes-sh | pipes.sh
-cbonsai | cbonsai
 
 
 [MACOS]
 
-iterm2
-rectangle
 handy
+iterm2
 mactop
 mole
 nowplaying-cli
+rectangle
 
 ## dev
 imagesnap
@@ -90,21 +90,20 @@ stripe/stripe-cli/stripe
 
 [ARCH]
 
-omarchy
-hyprland
-quickshell
+cursor-bin
 foot
 google-chrome
-cursor-bin
+hyprland
+omarchy
+quickshell
 
 
 [UBUNTU]
 
-tmux
-fastfetch
 btop
+fastfetch
 
-## standalone binaries (not in apt)
+## standalone binaries — installed from GitHub releases by install-ubuntu.sh, not APT
 bandwhich
 lazydocker
 tailspin
