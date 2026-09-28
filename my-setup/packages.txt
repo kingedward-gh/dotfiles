@@ -100,8 +100,22 @@ quickshell
 
 [UBUNTU]
 
+## utilities
 btop
+curl
 fastfetch
+pgcli
+pipx
+tmux
+
+## Docker — requires Docker's APT repository to be configured
+containerd.io
+docker-buildx-plugin
+docker-ce
+docker-ce-cli
+docker-ce-rootless-extras
+docker-compose-plugin
+docker-model-plugin
 
 ## standalone binaries — installed from GitHub releases by install-ubuntu.sh, not APT
 bandwhich
