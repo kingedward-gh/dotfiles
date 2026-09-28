@@ -1,4 +1,4 @@
-# Snapshot 2026-09-03 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-28 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: apt-mark showmanual
 
 bash
@@ -21,7 +21,6 @@ fastfetch
 fdisk
 findutils
 gdisk
-glances
 grep
 grub-pc
 gzip
@@ -36,8 +35,8 @@ ncurses-bin
 ncurses-term
 openssh-server
 openssh-sftp-server
-pg-activity
 pgcli
+pipx
 python-babel-localedata
 python3-babel
 python3-jinja2
