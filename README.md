@@ -11,7 +11,7 @@ Top-level folders are [GNU Stow](https://www.gnu.org/software/stow/) packages: e
 ```
 dotfiles/
 ├── zsh/              # zsh config —> Common
-├── git/              # gitconfig + global ignore —> Common
+├── git/              # gitconfig —> Common
 ├── gh/               # gh config.yml —> Common (hosts.yml stays local)
 ├── lazygit/          # lazygit config —> Common
 ├── lazydocker/       # lazydocker config —> Common
@@ -21,13 +21,14 @@ dotfiles/
 ├── bat/              # bat config —> Common
 ├── btop/             # btop config —> Common
 ├── fastfetch/        # fastfetch config —> Common
-├── cursor/           # Cursor config —> Arch
+├── cursor/           # Cursor CLI config, personal agents and skills —> Common
+├── cursor-arch/      # Shared editor settings at Arch paths
 ├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
-├── iterm2/           # iTerm2 config —> macOS
-├── mactop/           # mactop config —> macOS
+├── iterm2-macos/           # iTerm2 config —> macOS
+├── mactop-macos/           # mactop config —> macOS
 ├── alfred/           # Alfred prefs (not stowed — set folder in the app)
 ├── rectangle/        # Rectangle config —> macOS
-├── foot/             # Foot terminal config —> Arch
+├── foot-arch/             # Foot terminal config —> Arch
 ├── starlink-tracker/ # starlink script —> Common (stow wrapper, do not edit)
 ├── my-setup/         # setup manifests
 ├── my-dump/          # package inventory dump/snapshot
@@ -124,6 +125,10 @@ Packages are stowed in order:
 2. OS-specific sections (`[MACOS]` or `[ARCH]`)
 
 To add a new config folder, create it in the repo and add its name to `stow.txt` in the right section.
+
+The `cursor` package stores the shared CLI configuration (`.cursor/cli-config.json`), personal agents (`.cursor/agents/`) and skills (`.cursor/skills/`). Setup links them into `~/.cursor/` on macOS and Arch, keeping `~/.cursor` itself local. Agents and skills are directory symlinks; the CLI configuration is a file symlink. Empty target directories are removed before Stow runs; if either directory already contains files, move them into the matching package directory first. The `.gitkeep` files preserve empty directories in Git.
+
+The `cursor-arch` package holds the canonical editor `settings.json` and `keybindings.json` under `.config/Cursor/User/`. On Arch, Stow links these individual files. On macOS, `cursor-macos` links the same originals into `~/Library/Application Support/Cursor/User/`. Both platforms use the `cursor` common package plus their platform-specific package. Cache files, Cursor-managed `skills-cursor`, plans and transcripts stay outside these packages.
 
 ---
 

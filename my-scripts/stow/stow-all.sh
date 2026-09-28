@@ -149,6 +149,21 @@ stow_packages() {
                 stow_ok=1
             fi
             restore_fold_dir "$pkg" "$fold_rel" "$FOLD_STASH" "$stow_ok"
+        elif [ "$pkg" = "cursor" ]; then
+            # Keep Cursor's runtime directory local; fold only agents and skills.
+            mkdir -p "$HOME/.cursor" || return 1
+            local cursor_dir
+            for cursor_dir in agents skills; do
+                if [ -d "$HOME/.cursor/$cursor_dir" ] && [ ! -L "$HOME/.cursor/$cursor_dir" ]; then
+                    if ! rmdir "$HOME/.cursor/$cursor_dir"; then
+                        echo "  [✗] Move existing $HOME/.cursor/$cursor_dir contents into $REPO/$pkg/.cursor/$cursor_dir before retrying."
+                        return 1
+                    fi
+                fi
+            done
+            if stow -R -t "$HOME" -d "$REPO" "$pkg"; then
+                stow_ok=1
+            fi
         else
             if stow --no-folding -R -t "$HOME" -d "$REPO" "$pkg"; then
                 stow_ok=1

@@ -37,6 +37,9 @@ _global
 
 # Repository-specific rules
 
+# Personal Cursor agents and skills are versioned Stow package content.
+!cursor/.cursor/
+
 # ignores for this repo below --------------------------------------------------
 
 # cliamp runtime (config dir is folded into the repo)
