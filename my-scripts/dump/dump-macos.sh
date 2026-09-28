@@ -5,7 +5,9 @@
 # Output: my-dump/macos-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-dump/macos-dump.txt"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
+OUT="$REPO/my-dump/macos-dump.txt"
 
 if [[ "$OSTYPE" != "darwin"* ]]; then
     echo "⚠️  This script is for macOS only."

@@ -6,4 +6,3 @@
 	hooksPath = ~/.config/git/hooks
 [alias]
 	aliases = config --get-regexp '^alias\\.'
-	stats = "!f() { FIRST=$(git log --reverse --format='%ad' --date=short | head -n 1); FIRST_SEC=$(date -j -f '%Y-%m-%d' \"$FIRST\" '+%s'); NOW_SEC=$(date +%s); DIFF=$(( (NOW_SEC - FIRST_SEC) / 86400 )); WORKED=$(git log --format='%ad' --date=short | sort -u | wc -l | tr -d ' '); TOTAL=$(git rev-list --count HEAD | tr -d ' '); echo \"=== GIT STATS =======================\"; echo \"First commit date:         $FIRST\"; echo \"Total days (since start):  $DIFF\"; echo \"Days actually worked:      $WORKED\"; echo \"Total commits:             $TOTAL\"; echo \"=====================================\"; }; f"

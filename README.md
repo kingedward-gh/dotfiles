@@ -78,6 +78,9 @@ apt is already on Ubuntu. No extra helper is required.
 
 Install packages listed in `my-setup/packages.txt`.
 
+Install and dump scripts locate the repository relative to their own files, so
+the clone does not need to live at `~/Code/dotfiles`.
+
 ```bash
 # Install everything (COMMON + OS-specific) — auto-detects OS
 bash my-scripts/install/install-all.sh
@@ -172,6 +175,23 @@ When creating a new repository, copy the shared rules into its `.gitignore`. Cha
 
 
 ## Standalone scripts
+
+### `git stats`
+
+The `git` Stow package installs `~/.local/bin/git-stats`, available as `git stats`
+when `~/.local/bin` is on `PATH` (configured by `.zshenv`). After pulling this
+change on an existing machine, rerun `bash my-scripts/stow/stow-all.sh` to link
+the new executable.
+
+It reports the first commit date, elapsed 24-hour periods since midnight of that
+date, distinct author dates, and total commits reachable from `HEAD`. Date parsing
+supports both macOS BSD date and Linux GNU date. Empty repositories get a short
+message; running outside a repository returns an error.
+
+The shared post-commit hook runs these stats on both desktop systems. Webcam
+photos are taken only on macOS, using `imagesnap`, and saved in `~/Code/_git-photos`.
+On Linux, the photo step is skipped entirely. Ubuntu remains the separate VPS
+package profile; these changes do not install the desktop dotfiles there.
 
 Scripts that are not part of the stow/install workflow.
 

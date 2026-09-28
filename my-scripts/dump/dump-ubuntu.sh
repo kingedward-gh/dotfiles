@@ -5,7 +5,9 @@
 # Output: my-dump/ubuntu-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-dump/ubuntu-dump.txt"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
+OUT="$REPO/my-dump/ubuntu-dump.txt"
 
 if [ ! -f /etc/os-release ] || ! grep -qi '^ID=ubuntu' /etc/os-release; then
     echo "⚠️  This script is for Ubuntu only."

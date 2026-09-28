@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+    echo "git stats: run this command inside a Git repository." >&2
+    exit 1
+fi
+
+if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
+    echo "git stats: this repository has no commits yet."
+    exit 0
+fi
+
+# Commits reachable from HEAD, grouped by author date (as in the original alias).
+DATES=$(git log --reverse --format=%ad --date=short)
+FIRST=${DATES%%$'\n'*}
+
+# BSD date (macOS) and GNU date (Linux) have different parsing options.
+if FIRST_SEC=$(date -j -f '%Y-%m-%d %H:%M:%S' "$FIRST 00:00:00" +%s 2>/dev/null); then
+    :
+elif FIRST_SEC=$(date -d "$FIRST 00:00:00" +%s 2>/dev/null); then
+    :
+else
+    echo "git stats: cannot parse first commit date: $FIRST" >&2
+    exit 1
+fi
+NOW_SEC=$(date +%s)
+DIFF=$(( (NOW_SEC - FIRST_SEC) / 86400 ))
+WORKED=$(printf '%s\n' "$DATES" | sort -u | wc -l | tr -d '[:space:]')
+TOTAL=$(git rev-list --count HEAD)
+
+printf '%s\n' \
+    '=== GIT STATS =======================' \
+    "First commit date:         $FIRST" \
+    "Total days (since start):  $DIFF" \
+    "Days actually worked:      $WORKED" \
+    "Total commits:             $TOTAL" \
+    '====================================='

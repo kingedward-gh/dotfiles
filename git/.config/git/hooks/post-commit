@@ -1,19 +1,24 @@
-#!/bin/zsh
+#!/bin/bash
 
-PHOTO_DIR="$HOME/Code/_git-photos"
-mkdir -p "$PHOTO_DIR"
+# Webcam photos belong to the Mac only; stats run on both desktop systems.
+if [[ "$(uname -s)" == Darwin ]]; then
+  PHOTO_DIR="$HOME/Code/_git-photos"
 
-REPO=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
-COMMIT_HASH=$(git log -1 --format="%h")
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-FILENAME="${PHOTO_DIR}/${TIMESTAMP}_${REPO}_${COMMIT_HASH}.jpg"
+  REPO=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
+  COMMIT_HASH=$(git log -1 --format="%h")
+  TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+  FILENAME="${PHOTO_DIR}/${TIMESTAMP}_${REPO}_${COMMIT_HASH}.jpg"
 
-if command -v imagesnap >/dev/null 2>&1; then
-  # -w 1.00 imposta 1 secondo di riscaldamento della webcam (evita foto nere/sottoesposte)
-  imagesnap -w 1.00 "$FILENAME" >/dev/null 2>&1
-  echo "📸 Foto del commit salvata in $FILENAME"
-else
-  echo "⚠️ Errore: imagesnap non è installato."
+  if command -v imagesnap >/dev/null 2>&1; then
+    # -w 1.00 imposta 1 secondo di riscaldamento della webcam (evita foto nere/sottoesposte)
+    if mkdir -p "$PHOTO_DIR" && imagesnap -w 1.00 "$FILENAME" >/dev/null 2>&1; then
+      echo "📸 Foto del commit salvata in $FILENAME"
+    else
+      echo "⚠️ Impossibile salvare la foto del commit." >&2
+    fi
+  else
+    echo "⚠️ imagesnap non è installato; foto del commit saltata." >&2
+  fi
 fi
 
 git stats

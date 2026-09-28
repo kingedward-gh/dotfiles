@@ -4,7 +4,9 @@
 # Check & Install: UBUNTU-ONLY PACKAGES
 # ==============================================================================
 
-PKG_FILE="$HOME/Code/dotfiles/my-setup/packages.txt"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
+PKG_FILE="$REPO/my-setup/packages.txt"
 
 if [ ! -f /etc/os-release ] || ! grep -qi '^ID=ubuntu' /etc/os-release; then
     echo "⚠️  This script is for Ubuntu only."

@@ -5,7 +5,9 @@
 # Output: my-dump/arch-dump.txt
 # ==============================================================================
 
-OUT="$HOME/Code/dotfiles/my-dump/arch-dump.txt"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
+OUT="$REPO/my-dump/arch-dump.txt"
 
 if [ ! -f /etc/arch-release ]; then
     echo "⚠️  This script is for Arch Linux only."

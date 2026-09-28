@@ -4,7 +4,9 @@
 # Check & Install: SHARED PACKAGES (COMMON)
 # ==============================================================================
 
-PKG_FILE="$HOME/Code/dotfiles/my-setup/packages.txt"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
+PKG_FILE="$REPO/my-setup/packages.txt"
 
 if [ ! -f "$PKG_FILE" ]; then
     echo "❌ File $PKG_FILE not found!"
