@@ -49,6 +49,7 @@ tailspin | tailspin
 bandwhich | bandwhich
 
 ## dev
+codex | codex
 gh | github-cli
 lazygit | lazygit
 docker | docker

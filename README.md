@@ -26,8 +26,8 @@ dotfiles/
 ├── cursor-macos/     # Cursor config —> macOS (symlink wrapper, do not edit)
 ├── iterm2-macos/           # iTerm2 config —> macOS
 ├── mactop-macos/           # mactop config —> macOS
-├── alfred/           # Alfred prefs (not stowed — set folder in the app)
-├── rectangle/        # Rectangle config —> macOS
+├── alfred-macos/     # Alfred prefs (not stowed — set folder in the app)
+├── rectangle-macos/  # Rectangle config —> macOS
 ├── foot-arch/             # Foot terminal config —> Arch
 ├── starlink-tracker/ # starlink script —> Common (stow wrapper, do not edit)
 ├── my-setup/         # setup manifests

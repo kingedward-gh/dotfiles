@@ -22,11 +22,11 @@ yazi
 zsh
 
 [MACOS]
-# alfred # do not stow, change preferences folder from Alfred app
+# alfred-macos # do not stow, change preferences folder from Alfred app
 cursor-macos
 iterm2-macos
 mactop-macos
-# rectangle # do not stow
+# rectangle-macos # do not stow
 
 [ARCH]
 cursor-arch

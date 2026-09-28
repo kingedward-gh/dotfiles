@@ -1,4 +1,4 @@
-# Snapshot 2026-09-22 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-28 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: brew leaves + brew list --cask
 
 [FORMULAE]
@@ -46,6 +46,7 @@ zsh
 
 [CASKS]
 brave-browser
+codex
 font-jetbrains-mono-nerd-font
 font-monaspice-nerd-font
 handy
