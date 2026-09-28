@@ -35,7 +35,11 @@ fi
 
 # mvm: create the destination directory (if needed), then move
 mvm() {
-  mkdir -p "${@:-1}" && mv "$@"
+  if (( $# < 2 )); then
+    print -u2 'Usage: mvm source [source ...] destination-directory'
+    return 1
+  fi
+  mkdir -p -- "${argv[-1]}" && mv -- "$@"
 }
 
 # ex: extract archives like 'ex archive.tar.gz'

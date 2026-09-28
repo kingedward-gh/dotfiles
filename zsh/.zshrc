@@ -8,7 +8,7 @@ ZSH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 ### oh my zsh
 
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 ZSH_THEME="robbyrussell" # chosen options: robbyrussell, agnoster, fino, bira, ys, bureau
 
 # VSCode to cursor
@@ -49,17 +49,22 @@ plugins=(
   # zoxide
   # zsh-interactive-cd
 
-  # git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-  fzf-tab
-
-  # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  zsh-autosuggestions
-
-  # git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-  fast-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+# External plugins are installed by my-scripts/install/setup-zsh.sh.
+for _dotfiles_plugin in fzf-tab zsh-autosuggestions fast-syntax-highlighting; do
+  if [[ -f "${ZSH_CUSTOM:-$ZSH/custom}/plugins/$_dotfiles_plugin/$_dotfiles_plugin.plugin.zsh" ]]; then
+    plugins+=("$_dotfiles_plugin")
+  fi
+done
+unset _dotfiles_plugin
+
+if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
+  mkdir -p -- "${ZSH_COMPDUMP:h}"
+  source "$ZSH/oh-my-zsh.sh"
+elif [[ -o interactive ]]; then
+  print -u2 'Oh My Zsh missing. From the dotfiles repo, run: bash my-scripts/install/setup-zsh.sh'
+fi
 
 
 ### history (oh-my-zsh defaults, made explicit)
@@ -85,12 +90,16 @@ setopt NUMERIC_GLOB_SORT       # file10 after file9, not after file1
 ### rbenv
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+if command -v rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init - zsh)"
+fi
 
 
 ### zoxide
 
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 
 
 ### fzf

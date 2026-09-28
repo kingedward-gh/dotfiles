@@ -91,6 +91,23 @@ bash my-scripts/install/install-ubuntu.sh   # Ubuntu only (apt)
 
 `packages.txt` uses `brew_name | arch_name` for `[COMMON]` (macOS + Arch). `[MACOS]`, `[ARCH]`, and `[UBUNTU]` hold OS-specific packages. Ubuntu (VPS) installs **only** `[UBUNTU]`, not `[COMMON]`.
 
+On macOS and Arch, `install-all.sh` then runs `setup-zsh.sh` to install Oh My Zsh,
+fzf-tab, zsh-autosuggestions, and fast-syntax-highlighting. Git is required for
+downloads. Existing installations are left unchanged; the script does not update
+them, replace `.zshrc`, or change your login shell. Failed downloads stop setup
+and can be retried by running it again. An existing but incomplete destination
+is reported for manual inspection, never overwritten.
+
+For a new macOS/Arch machine, run `install-all.sh` first (packages, then shell
+dependencies), then `bash my-scripts/stow/stow-all.sh`, and open a new Zsh session.
+If installing packages individually, run `bash my-scripts/install/setup-zsh.sh`
+before Stow. Shell setup respects `ZSH` and `ZSH_CUSTOM` if set; use the same values
+in your shell. Ubuntu's VPS installation does not run shell setup.
+
+The Zsh configuration skips missing external plugins and optional rbenv/zoxide
+initialization. If Oh My Zsh is missing, interactive shells show the setup command
+and remain usable.
+
 ---
 
 
@@ -125,6 +142,13 @@ Packages are stowed in order:
 2. OS-specific sections (`[MACOS]` or `[ARCH]`)
 
 To add a new config folder, create it in the repo and add its name to `stow.txt` in the right section.
+
+When converting an existing `~/.config/cliamp` directory into a directory symlink,
+the script adopts matching local files and keeps the original directory at
+`~/.config/cliamp.stow-backup.XXXXXX/old` (the exact path is printed).
+Check the migrated configuration before manually deleting that backup. Copy or
+restore failures stop the script and preserve the original files; if Stow fails
+and the destination is free, the original directory is moved back automatically.
 
 The `cursor` package stores the shared CLI configuration (`.cursor/cli-config.json`), personal agents (`.cursor/agents/`) and skills (`.cursor/skills/`). Setup links them into `~/.cursor/` on macOS and Arch, keeping `~/.cursor` itself local. Agents and skills are directory symlinks; the CLI configuration is a file symlink. Empty target directories are removed before Stow runs; if either directory already contains files, move them into the matching package directory first. The `.gitkeep` files preserve empty directories in Git.
 

@@ -32,3 +32,7 @@ if [ "$RUN_COMMON" = true ]; then
 fi
 
 "$OS_SCRIPT" || exit $?
+
+if [ "$RUN_COMMON" = true ]; then
+    bash "$SCRIPT_DIR/setup-zsh.sh" || exit $?
+fi

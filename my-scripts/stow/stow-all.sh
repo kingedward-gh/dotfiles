@@ -75,16 +75,25 @@ prepare_fold_dir() {
     fi
 
     local f base
-    for f in "$src"/*; do
+    for f in "$src"/* "$src"/.[!.]* "$src"/..?*; do
         [ -f "$f" ] || continue
+        [ -L "$f" ] && continue
         base=$(basename "$f")
         if [ -f "$dst/$base" ] && [ ! -L "$dst/$base" ]; then
-            cp "$dst/$base" "$f"
+            if ! cp "$dst/$base" "$f"; then
+                echo "  [✗] Cannot copy $dst/$base; original directory left in place" >&2
+                return 1
+            fi
         fi
     done
 
-    FOLD_STASH=$(mktemp -d "${TMPDIR:-/tmp}/stow-${pkg}.XXXXXX")
-    mv "$dst" "$FOLD_STASH/old"
+    # Keep the original on the same filesystem, outside temporary-file cleanup.
+    FOLD_STASH=$(mktemp -d "${dst}.stow-backup.XXXXXX") || return 1
+    if ! mv "$dst" "$FOLD_STASH/old"; then
+        echo "  [✗] Cannot move $dst; inspect $FOLD_STASH before retrying" >&2
+        return 1
+    fi
+    echo "  Backup: $FOLD_STASH/old"
 }
 
 restore_fold_dir() {
@@ -96,25 +105,34 @@ restore_fold_dir() {
     local dst="$HOME/$rel"
 
     [ -n "$stash" ] || return 0
-    [ -d "$stash/old" ] || { rm -rf "$stash"; return 0; }
+    if [ ! -d "$stash/old" ]; then
+        echo "  [✗] Missing original directory at $stash/old" >&2
+        return 1
+    fi
 
     if [ "$stow_ok" != 1 ]; then
-        if [ ! -e "$dst" ]; then
-            mv "$stash/old" "$dst"
+        if [ ! -e "$dst" ] && [ ! -L "$dst" ]; then
+            if mv "$stash/old" "$dst"; then
+                rmdir "$stash" || return 1
+                return 0
+            fi
         fi
-        rm -rf "$stash"
-        return 0
+        echo "  [✗] Could not restore $dst; original preserved at $stash/old" >&2
+        return 1
     fi
 
     local f base
-    for f in "$stash/old"/* "$stash/old"/.[!.]*; do
-        [ -e "$f" ] || continue
+    for f in "$stash/old"/* "$stash/old"/.[!.]* "$stash/old"/..?*; do
+        [ -e "$f" ] || [ -L "$f" ] || continue
         base=$(basename "$f")
-        if [ ! -e "$src/$base" ]; then
-            cp -a "$f" "$dst/"
+        if [ ! -e "$src/$base" ] && [ ! -L "$src/$base" ]; then
+            if ! cp -a "$f" "$dst/"; then
+                echo "  [✗] Cannot copy $f; original preserved at $stash/old" >&2
+                return 1
+            fi
         fi
     done
-    rm -rf "$stash"
+    echo "  Original retained at $stash/old; remove it manually after checking the migration."
 }
 
 stow_packages() {
@@ -136,7 +154,7 @@ stow_packages() {
 
         if [ ! -d "$REPO/$pkg" ]; then
             echo "  [✗] $pkg (folder not found in $REPO)"
-            continue
+            return 1
         fi
 
         local fold_rel stow_ok=0
@@ -148,7 +166,7 @@ stow_packages() {
             if stow -R -t "$HOME" -d "$REPO" "$pkg"; then
                 stow_ok=1
             fi
-            restore_fold_dir "$pkg" "$fold_rel" "$FOLD_STASH" "$stow_ok"
+            restore_fold_dir "$pkg" "$fold_rel" "$FOLD_STASH" "$stow_ok" || return 1
         elif [ "$pkg" = "cursor" ]; then
             # Keep Cursor's runtime directory local; fold only agents and skills.
             mkdir -p "$HOME/.cursor" || return 1
