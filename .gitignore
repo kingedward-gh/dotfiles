@@ -14,9 +14,6 @@
 *.swp
 *.swo
 .idea/
-.cursor
-.vscode
-*.code-workspace
 statsig-cache.json
 
 # Backup leftovers
@@ -37,9 +34,6 @@ _global
 
 # Repository-specific rules
 
-# Personal Cursor agents and skills are versioned Stow package content.
-!cursor/.cursor/
-
 # ignores for this repo below --------------------------------------------------
 
 # cliamp runtime (config dir is folded into the repo)
@@ -48,7 +42,6 @@ cliamp/.config/cliamp/*.lock
 cliamp/.config/cliamp/*.pid
 cliamp/.config/cliamp/*.sock
 cliamp/.config/cliamp/history.toml
-cliamp/.config/cliamp/radio_favorites.toml
 
 # Alfred: snippets stay on disk for Alfred, but not in git (passwords, PII)
 alfred/Alfred.alfredpreferences/snippets/

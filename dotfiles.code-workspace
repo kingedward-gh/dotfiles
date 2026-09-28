@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{ "path": "./_global" },
+		{ "path": "." }
+	],
+	"settings": {
+		"files.exclude": {
+			"_global": true
+		},
+		"search.exclude": {
+			"_global": true
+		}
+	}
+}
