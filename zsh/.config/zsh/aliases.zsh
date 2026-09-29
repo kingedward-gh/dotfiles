@@ -24,6 +24,19 @@ alias ioartista='cd ~/Code/ioartista_it'
 alias grillone='cd ~/Code/grillone_it'
 alias grillone-ghl='cd ~/Code/grillone_it-ghl'
 
+# y: yazi, then cd to the directory you quit from (q changes cwd, Q does not)
+# https://yazi-rs.github.io/docs/quick-start#shell-wrapper
+if command -v yazi >/dev/null 2>&1; then
+  y() {
+    local tmp cwd
+    tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+    command rm -f -- "$tmp"
+  }
+fi
+
 # ls
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza -lh --group-directories-first --color=auto --icons=auto'
