@@ -42,6 +42,7 @@ fcitx5-gtk
 fcitx5-qt
 fd
 ffmpegthumbnailer
+figlet
 foot
 fzf
 git
@@ -153,6 +154,7 @@ sudo
 sushi
 system-config-printer
 tailspin
+telegram-desktop
 tensaku
 tesseract
 tesseract-data-eng
