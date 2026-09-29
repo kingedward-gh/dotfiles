@@ -1,9 +1,14 @@
 # ==============================================================================
 # [COMMON]
-# Syntax colors come from the system nanorc. Homebrew already includes
-# /opt/homebrew/share/nano/*.nanorc; Arch and Ubuntu include
-# /usr/share/nano/*.nanorc from /etc/nanorc.
+# Syntax files are reached through symlinks that zsh refreshes on startup
+# (see link_nano_syntax in ~/.zshrc). On Arch those point at
+# /usr/share/nano, because /etc/nanorc leaves the includes commented out.
+# On macOS they point at an empty dir: Homebrew already loads
+# /opt/homebrew/share/nano/*.nanorc from /opt/homebrew/etc/nanorc.
 # ==============================================================================
+
+include "~/.local/share/nano/syntax/*.nanorc"
+include "~/.local/share/nano/syntax-extra/*.nanorc"
 
 set linenumbers
 set autoindent

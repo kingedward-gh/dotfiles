@@ -110,6 +110,42 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 
 
+### nano
+
+# Point ~/.config/nano/nanorc at the syntax dir for this machine.
+# Nano errors on startup when an include path does not exist.
+link_nano_syntax() {
+  local fallback="${HOME}/.local/share/nano/empty"
+  local main="$fallback" extra="$fallback"
+  mkdir -p "$fallback"
+  [[ -e "$fallback/noop.nanorc" ]] || : > "$fallback/noop.nanorc"
+
+  if [[ -d /usr/share/nano ]]; then
+    local already=0
+    if [[ -f /etc/nanorc ]] && grep -Eq '^[[:space:]]*include[[:space:]]+["'\'']?/usr/share/nano/' /etc/nanorc; then
+      already=1
+    fi
+    if (( ! already )); then
+      main=/usr/share/nano
+      [[ -d /usr/share/nano/extra ]] && extra=/usr/share/nano/extra
+    fi
+  fi
+
+  _nano_relink "${HOME}/.local/share/nano/syntax" "$main"
+  _nano_relink "${HOME}/.local/share/nano/syntax-extra" "$extra"
+}
+
+_nano_relink() {
+  local link="$1" target="$2"
+  if [[ -L "$link" && "$(readlink "$link")" == "$target" ]]; then
+    return
+  fi
+  ln -sfn "$target" "$link"
+}
+
+link_nano_syntax
+
+
 ### aliases
 
 [[ -f "$ZSH_CONFIG/aliases.zsh" ]] && source "$ZSH_CONFIG/aliases.zsh"
