@@ -175,6 +175,10 @@ alias vps-bandwhich="ssh -t vps sudo bandwhich"
 # ==============================================================================
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  # agents
+  alias ca='cursor-agent' # cursor
+  # alias codex='codex' # codex
+
   # nano: use English locale to avoid encoding issues
   alias nano='LC_ALL=C nano'
 
@@ -296,6 +300,10 @@ fi
 # ==============================================================================
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # agents
+  alias ca='cursor-agent' # cursor
+  # alias codex='codex' # codex
+
   # Flush the DNS cache (useful when a site fails to load after DNS changes)
   alias flushdns="sudo systemd-resolve --flush-caches"
 

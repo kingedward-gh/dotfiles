@@ -75,6 +75,7 @@ pipes-sh | pipes.sh
 [MACOS]
 
 # cursor
+cursor-cli
 # google-chrome
 handy
 iterm2
