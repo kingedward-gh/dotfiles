@@ -125,6 +125,44 @@ and remain usable.
 
 
 
+## Zsh keybindings
+
+Emacs mode is the default. fzf, Oh My Zsh, and custom widgets **override** some emacs defaults (marked below).
+
+### fzf / custom
+
+| Key                   | Source          | What it does                                                  |
+| --------------------- | --------------- | ------------------------------------------------------------- |
+| Ctrl+T                | `fzf --zsh`     | file picker (including hidden files, `fd --hidden`)           |
+| Ctrl+F                | `fzf.zsh`       | file picker **without** hidden files                          |
+| Ctrl+R                | `fzf --zsh`     | fuzzy history                                                 |
+| Ctrl+G                | `fzf.zsh`       | fuzzy `cd` into directories (instead of the fzf default Alt+C) |
+| Tab                   | fzf-tab         | fzf completion menu                                           |
+| Ctrl+X Ctrl+E         | OMZ             | edit the command in `$EDITOR`                                 |
+| Ctrl+X L              | custom widget   | clear the screen while keeping the command                    |
+| Ctrl+X C              | custom widget   | copy the buffer to the clipboard                              |
+| Option+Left / Right   | zsh             | word backward / forward (instead of Alt+B / Alt+F)            |
+| Ctrl+_ (Ctrl+Shift+-) | zsh             | undo in the buffer                                            |
+| Right arrow / End     | autosuggestions | accept the gray suggestion                                    |
+
+### emacs standard (always active unless reassigned)
+
+| Key                      | What it does                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| Ctrl+A / Ctrl+E          | start / end of line                                                           |
+| Ctrl+B                   | back one character (`Ctrl+F` no longer does this: it is the file picker)      |
+| Ctrl+U / Ctrl+K / Ctrl+W | delete to start of line / to end of line / word                               |
+| Ctrl+Y                   | paste (yank) what you deleted with U/K/W                                      |
+| Ctrl+L                   | clear (also resets the visual buffer, unlike Ctrl+X L)                        |
+| Alt+.                    | insert the last argument of the previous command (`Esc` then `.`)             |
+| Ctrl+P / Ctrl+N          | history line by line (without fzf)                                            |
+
+`Ctrl+T`, `Ctrl+R`, and `Ctrl+G` are no longer the zsh defaults (`transpose-chars`, incremental history, `send-break`): fzf / `fzf.zsh` replaced them.
+
+---
+
+
+
 ## Dump scripts
 
 Save a snapshot of **currently installed** packages (useful to compare against `packages.txt`).
