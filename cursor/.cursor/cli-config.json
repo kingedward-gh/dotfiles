@@ -35,5 +35,10 @@
   "attribution": {
     "attributeCommitsToAgent": true,
     "attributePRsToAgent": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.cursor/statusline.sh",
+    "padding": 2
   }
 }
