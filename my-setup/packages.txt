@@ -29,16 +29,14 @@ zsh | zsh
 
 ## fonts
 font-jetbrains-mono-nerd-font | ttf-jetbrains-mono-nerd
-font-monaspice-nerd-font | font-monaspice-nerd-font
+font-monaspice-nerd-font | otf-monaspace-nerd
 
 ## editors
-# cursor | cursor-bin
 nano | nano
 neovim | neovim
 
 ## apps
 # brave-browser ?
-# google-chrome | google-chrome
 # librewolf ?
 
 ## monitoring
@@ -49,7 +47,7 @@ gping | gping
 tailspin | tailspin
 
 ## dev
-codex | codex
+codex | openai-codex
 docker | docker
 gh | github-cli
 lazydocker | lazydocker
@@ -66,7 +64,7 @@ bjarneo/cliamp/cliamp | cliamp
 kew | kew
 
 ## video
-# asciinema | asciinema
+# asciinema ?
 
 ## fun
 cbonsai | cbonsai
@@ -76,6 +74,8 @@ pipes-sh | pipes.sh
 
 [MACOS]
 
+# cursor
+# google-chrome
 handy
 iterm2
 mactop
