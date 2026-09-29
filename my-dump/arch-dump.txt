@@ -1,4 +1,4 @@
-# Snapshot 2026-09-06 — inventory, NOT the install list (that is my-setup/packages.txt)
+# Snapshot 2026-09-29 — inventory, NOT the install list (that is my-setup/packages.txt)
 # Command: pacman -Qeq  (explicit, repos + AUR)
 
 aether
@@ -16,7 +16,7 @@ bolt
 brightnessctl
 btop
 btrfs-progs
-chromium
+cbonsai-git
 clang
 cliamp
 cmatrix
@@ -76,6 +76,7 @@ inxi
 jq
 kdenlive
 kernel-modules-hook
+kew
 lazydocker
 lazygit
 less
@@ -86,8 +87,10 @@ libyaml
 limine
 linux
 linux-firmware
+linux-omarchy
+linux-omarchy-headers
 llvm
-localsend
+localsend-bin
 lua51
 luarocks
 man-db
@@ -114,6 +117,8 @@ omarchy-keyring
 omarchy-nvim
 omarchy-settings
 omawrite
+openai-codex
+otf-monaspace-nerd
 pacman-contrib
 pamixer
 paru
@@ -151,8 +156,9 @@ tailspin
 tensaku
 tesseract
 tesseract-data-eng
+thefuck
 thermald
-tldr
+tlrc-bin
 tmux
 tobi-try
 tree-sitter-cli
@@ -167,6 +173,7 @@ usage
 uwsm
 vpl-gpu-rt
 vulkan-intel
+wget
 whois
 wireless-regdb
 wireplumber
