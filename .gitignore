@@ -44,5 +44,5 @@ cliamp/.config/cliamp/*.sock
 cliamp/.config/cliamp/history.toml
 
 # Alfred: snippets stay on disk for Alfred, but not in git (passwords, PII)
-alfred/Alfred.alfredpreferences/snippets/
-alfred/Alfred.alfredpreferences/clipboard/
+alfred-macos/Alfred.alfredpreferences/snippets/
+alfred-macos/Alfred.alfredpreferences/clipboard/
