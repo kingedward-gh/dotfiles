@@ -21,7 +21,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias dotfiles='cd ~/Code/dotfiles'
 alias ioartista='cd ~/Code/ioartista_it'
-alias grillone='cd ~/Code/grillone_it'
+alias lina='cd ~/Code/lina'
+# alias grillone='cd ~/Code/grillone_it'
 alias grillone-ghl='cd ~/Code/grillone_it-ghl'
 
 # y: yazi, then cd to the directory you quit from (q changes cwd, Q does not)
@@ -128,6 +129,10 @@ lazypush() {
 alias gg="lazypush"
 alias lg='lazygit'
 
+# agents
+alias ca='cursor-agent'
+alias co='codex'
+
 # rails
 alias bd='bin/dev'
 alias bi='bundle install'
@@ -188,10 +193,6 @@ alias vps-bandwhich="ssh -t vps sudo bandwhich"
 # ==============================================================================
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # agents
-  alias ca='cursor-agent' # cursor
-  # alias codex='codex' # codex
-
   # nano: use English locale to avoid encoding issues
   alias nano='LC_ALL=C nano'
 
@@ -313,10 +314,6 @@ fi
 # ==============================================================================
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  # agents
-  alias ca='cursor-agent' # cursor
-  # alias codex='codex' # codex
-
   # Flush the DNS cache (useful when a site fails to load after DNS changes)
   alias flushdns="sudo systemd-resolve --flush-caches"
 
