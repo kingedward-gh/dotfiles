@@ -5,9 +5,11 @@
 # For each repo: git pull --no-rebase --ff-only, then git status.
 # --no-rebase overrides pull.rebase so a dirty tree that is not behind
 # still counts as synced. --ff-only refuses a merge or rebase.
-# Prints one summary line.
+# Prints one status line per repo:
+#   repo-name: OK
+#   repo-name: uncommitted changes
 
-CODE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+CODE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 
 join_by() {
   local sep="$1"
@@ -47,32 +49,6 @@ note_for_codes() {
     esac
   done
   join_by ", " "${parts[@]}"
-}
-
-print_summary() {
-  if [[ ${#problem_names[@]} -eq 0 ]]; then
-    echo "all repos up to date and synced with remote"
-    return 0
-  fi
-
-  local names_list first same=1 note
-  names_list="$(join_by ", " "${problem_names[@]}")"
-  first="${problem_notes[0]}"
-  for note in "${problem_notes[@]}"; do
-    [[ "$note" == "$first" ]] || same=0
-  done
-
-  if [[ "$same" -eq 1 ]]; then
-    echo "all repos except ${names_list} are up to date and synced: ${first}"
-    return 1
-  fi
-
-  local details=() i
-  for i in "${!problem_names[@]}"; do
-    details+=("${problem_names[$i]} (${problem_notes[$i]})")
-  done
-  echo "all repos except ${names_list} are up to date and synced: $(join_by "; " "${details[@]}")"
-  return 1
 }
 
 check_repo() {
@@ -147,20 +123,20 @@ main() {
     exit 1
   fi
 
-  problem_names=()
-  problem_notes=()
-
-  local dir raw codes_arr=()
+  local dir raw failed=0 codes_arr=()
   for name in "${repos[@]}"; do
     dir="$CODE_DIR/$name"
     raw="$(check_repo "$dir")"
-    [[ -z "$raw" ]] && continue
-    IFS='|' read -r -a codes_arr <<< "$raw"
-    problem_names+=("$name")
-    problem_notes+=("$(note_for_codes "${codes_arr[@]}")")
+    if [[ -z "$raw" ]]; then
+      printf '%s: OK\n' "$name"
+    else
+      IFS='|' read -r -a codes_arr <<< "$raw"
+      printf '%s: %s\n' "$name" "$(note_for_codes "${codes_arr[@]}")"
+      failed=1
+    fi
   done
 
-  print_summary
+  return "$failed"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
