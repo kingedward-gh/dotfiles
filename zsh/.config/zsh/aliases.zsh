@@ -22,8 +22,9 @@ alias ....='cd ../../..'
 alias dotfiles='cd ~/Code/dotfiles'
 alias ioartista='cd ~/Code/ioartista_it'
 alias lina='cd ~/Code/lina'
-# alias grillone='cd ~/Code/grillone_it'
-alias grillone-ghl='cd ~/Code/grillone_it-ghl'
+alias grillone-ghl='cd ~/Code/grillone-ghl'
+# repos in ~/Code (skip folders starting with _)
+alias check-repos='~/Code/dotfiles/my-scripts/check-repos.sh'
 
 # y: yazi, then cd to the directory you quit from (q changes cwd, Q does not)
 # https://yazi-rs.github.io/docs/quick-start#shell-wrapper
