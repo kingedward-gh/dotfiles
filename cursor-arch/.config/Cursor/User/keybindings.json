@@ -85,5 +85,15 @@
     {
         "key": "cmd+[Quote]",
         "command": "editor.cpp.toggle"
+    },
+    {
+        "key": "ctrl+cmd+g",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+cmd+l",
+        "command": "-editor.action.selectHighlights",
+        "when": "editorFocus"
     }
 ]
