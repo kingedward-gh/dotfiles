@@ -6,6 +6,7 @@
 	hooksPath = ~/.config/git/hooks
 [alias]
 	aliases = config --get-regexp '^alias\\.'
+	find-ignored =  ls-files --others --ignored --exclude-standard -- ':!:tmp/cache/**' ':!:log/**' ':!**/.DS_Store' ':!.DS_Store'
 # Portable across Arch (mise) and macOS (Homebrew). gh auth setup-git would
 # replace these with an absolute path and break the other machine.
 [credential "https://github.com"]
