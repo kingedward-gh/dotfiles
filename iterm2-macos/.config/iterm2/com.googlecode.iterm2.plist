@@ -2750,7 +2750,7 @@
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>LeftTabBarWidth</key>
-	<real>135</real>
+	<real>143</real>
 	<key>MaxVertically</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -3431,9 +3431,9 @@
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
-			<real>5.4046010638297881</real>
+			<real>20.448914679901218</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -4161,7 +4161,7 @@
 			<key>Normal Font</key>
 			<string>JetBrainsMonoNFM-Regular 12</string>
 			<key>Only The Default BG Color Uses Transparency</key>
-			<true/>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4263,7 +4263,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.15072544642857144</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Active Pane Border (Dark)</key>
@@ -5930,7 +5930,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
 	<true/>
 	<key>ToolbeltTools</key>
