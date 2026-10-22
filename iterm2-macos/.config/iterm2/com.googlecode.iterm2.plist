@@ -3385,6 +3385,8 @@
 				<key>Red Component</key>
 				<real>0.99215686321258545</real>
 			</dict>
+			<key>Background Image Mode</key>
+			<integer>2</integer>
 			<key>Background Image Source Mode</key>
 			<integer>0</integer>
 			<key>Badge Color</key>
@@ -3427,11 +3429,11 @@
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.0</real>
+			<real>0.09720004562043795</real>
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<true/>
+			<false/>
 			<key>Blur Radius</key>
 			<real>20.448914679901218</real>
 			<key>Bold Color</key>
@@ -4263,7 +4265,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.15072544642857144</real>
+			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Active Pane Border (Dark)</key>
