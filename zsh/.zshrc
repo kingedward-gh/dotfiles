@@ -163,3 +163,32 @@ unset MAILCHECK
 
 # zmv (batch rename/copy/link with patterns)
 autoload -Uz zmv
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Display execution time for commands taking 5 seconds or longer
+autoload -Uz add-zsh-hook
+zmodload zsh/datetime
+
+_command_started_at=""
+
+_command_timer_start() {
+  _command_started_at=$EPOCHREALTIME
+}
+
+_command_timer_end() {
+  local exit_status=$?
+  [[ -z "$_command_started_at" ]] && return 0
+
+  local elapsed=$(( EPOCHREALTIME - _command_started_at ))
+  _command_started_at=""
+
+  if (( elapsed >= 5 )); then
+    printf '\n⏱  Completed in %.1fs\n' "$elapsed"
+  fi
+
+  return 0
+}
+
+add-zsh-hook preexec _command_timer_start
+add-zsh-hook precmd _command_timer_end

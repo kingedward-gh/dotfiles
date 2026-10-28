@@ -2604,7 +2604,7 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x21-0x1a0000-0x12</key>
+		<key>0x21-0x1a0000-0x12-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>40</integer>
@@ -2617,7 +2617,7 @@
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
-		<key>0x22-0x1a0000-0x13</key>
+		<key>0x22-0x1a0000-0x13-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>40</integer>
@@ -2630,7 +2630,7 @@
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
-		<key>0x5c-0x100000-0xa</key>
+		<key>0x5c-0x100000-0xa-0x1</key>
 		<dict>
 			<key>Action</key>
 			<integer>1</integer>
