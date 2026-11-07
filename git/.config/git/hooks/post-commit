@@ -11,7 +11,7 @@ if [[ "$(uname -s)" == Darwin ]]; then
 
   if command -v imagesnap >/dev/null 2>&1; then
     # -w 1.00 imposta 1 secondo di riscaldamento della webcam (evita foto nere/sottoesposte)
-    if mkdir -p "$PHOTO_DIR" && imagesnap -w 1.00 "$FILENAME" >/dev/null 2>&1; then
+    if mkdir -p "$PHOTO_DIR" && imagesnap -d "Brio 300" -w 1.00 "$FILENAME" >/dev/null 2>&1; then
       echo "📸 Foto del commit salvata in $FILENAME"
     else
       echo "⚠️ Impossibile salvare la foto del commit." >&2
