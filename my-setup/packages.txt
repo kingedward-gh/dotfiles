@@ -36,8 +36,7 @@ nano | nano
 neovim | neovim
 
 ## apps
-# brave-browser ?
-# librewolf ?
+obs | obs-studio
 
 ## monitoring
 bandwhich | bandwhich

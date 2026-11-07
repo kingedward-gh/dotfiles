@@ -6,11 +6,11 @@
 # ==============================================================================
 
 [COMMON]
+
 bat
 btop
 # fold ~/.config/cliamp — app replaces file-level stow symlinks on save
 cliamp
-cursor
 fastfetch
 gh
 git
@@ -21,13 +21,18 @@ starlink-tracker
 yazi
 zsh
 
+
 [MACOS]
+
 # alfred-macos # do not stow, change preferences folder from Alfred app
-cursor-macos
+obs-macos
 iterm2-macos
 mactop-macos
+cursor-macos
 # rectangle-macos # do not stow
 
+
 [ARCH]
+
 cursor-arch
 foot-arch
